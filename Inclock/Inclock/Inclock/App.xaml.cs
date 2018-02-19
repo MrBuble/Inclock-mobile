@@ -13,7 +13,7 @@ namespace Inclock
 		{
 			InitializeComponent();
 
-			MainPage = new Inclock.MainPage();
+			MainPage = new View.MainPage();
 		}
 
 		protected override void OnStart ()
