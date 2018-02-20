@@ -12,7 +12,6 @@ namespace Inclock
 		public App ()
 		{
 			InitializeComponent();
-
 			MainPage = new View.MainPage();
 		}
 
