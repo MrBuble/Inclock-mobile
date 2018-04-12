@@ -137,4 +137,13 @@
   <ItemGroup>
     <AndroidResource Include="Resources\loading.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PontoEntrada.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\PontoSaida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logout.png" />
+  </ItemGroup>
 </Project>

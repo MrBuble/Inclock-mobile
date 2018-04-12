@@ -13,7 +13,8 @@ namespace Inclock
         {
             InitializeComponent();
 
-            MainPage = new View.LoginPage();
+               MainPage = new View.LoginPage();       
+           
         }
 
         protected override void OnStart()
@@ -23,7 +24,7 @@ namespace Inclock
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            base.OnSleep();
         }
 
         protected override void OnResume()

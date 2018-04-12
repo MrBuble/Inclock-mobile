@@ -18,24 +18,24 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="CenterAndExpand">
                 <Entry
-                    x:Uid="txtlogin"
+                    x:Name="txtlogin"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Login"
                     VerticalOptions="Center" />
                 <Entry
-                    x:Uid="txtSenha"
+                    x:Name="txtSenha"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Senha"
                     VerticalOptions="Center" />
                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                     <Button
-                        x:Uid="btnLogar"
+                        x:Name="btnLogar"
                         HorizontalOptions="Start"
                         Text="Logar"
                         VerticalOptions="Start" />
 
                     <Button
-                        x:Uid="btnEsqueciSenha"
+                        x:Name="btnEsqueciSenha"
                         HorizontalOptions="End"
                         Text="Esqueci a Senha"
                         VerticalOptions="Start" />
@@ -46,7 +46,7 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="End">
                 <Label
-                    x:Uid="lblRodape"
+                    x:Name="lblRodape"
                     HorizontalOptions="CenterAndExpand"
                     Text="Inclock Copyright©" />
             </StackLayout>
