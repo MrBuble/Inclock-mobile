@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -18,7 +19,7 @@ namespace Inclock.View.MasterPage
             MasterPage.lvItensMenu.ItemSelected += LvItensMenu_ItemSelected;
             
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(View.NavigatePages.Avisos)));
-
+       
         }
 
         private void LvItensMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -34,5 +35,6 @@ namespace Inclock.View.MasterPage
             IsPresented = false;
             MasterPage.lvItensMenu.SelectedItem = null;
         }
+
     }
 }

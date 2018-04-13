@@ -20,17 +20,10 @@ namespace Inclock.View.MasterPage
             InitializeComponent();
             BindingContext = new ViewModels.MasterPageItensViewModel();
             lvItensMenu = lvDetalhes;
-            btnSair.Clicked += BtnSair_Clicked;
+            
+      
         }
 
-        private async void BtnSair_Clicked(object sender, EventArgs e)
-        {
-            if (await DisplayAlert("Confirmar","Deseja realmente sair","Sim","Não"))
-            {
-
-                Thread thread = Thread.CurrentThread;
-                thread.Abort();
-            }
-        }
+       
     }
 }

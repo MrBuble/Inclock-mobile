@@ -52,24 +52,10 @@
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
+
             </ListView.ItemTemplate>
         </ListView>
-        <ViewCell>
-            <StackLayout Padding="20,10,0,10" Orientation="Horizontal">
-                <Button x:Name="btnSair">
-                    <Image
-                        HeightRequest="40"
-                        Source="{Binding Icon}"
-                        VerticalOptions="Center"
-                        WidthRequest="40" />
-                    <Label
-                        FontSize="Medium"
-                        Text="Sair"
-                        TextColor="Black"
-                        VerticalOptions="Center" />
-                </Button>
-            </StackLayout>
-        </ViewCell>
+
     </StackLayout>
 
 </ContentPage>

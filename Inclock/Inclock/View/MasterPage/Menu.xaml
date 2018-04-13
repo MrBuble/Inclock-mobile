@@ -7,5 +7,6 @@
     MasterBehavior="Popover">
     <MasterDetailPage.Master>
         <page:Master x:Name="MasterPage" />
+
     </MasterDetailPage.Master>
 </MasterDetailPage>
