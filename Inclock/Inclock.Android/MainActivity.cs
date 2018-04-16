@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FFImageLoading.Forms.Droid;
 
 namespace Inclock.Droid
 {
@@ -20,6 +21,9 @@ namespace Inclock.Droid
             
            
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            FFImageLoading.Forms.Droid.CachedImageRenderer.Init(true);
+
+        
             LoadApplication(new App());
         }
     }

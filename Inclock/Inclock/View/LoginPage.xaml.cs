@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,17 +21,20 @@ namespace Inclock.View
             {
                 try
                 {
+                    imgLogin.IsVisible = true;
                     FeedBack feed = await BL.Login.Logar(txtlogin.Text, txtSenha.Text);
-
                     if (!feed.Status)
-                        await DisplayAlert("Login", "Login ou usuario não encontrado", "OK");
+                        await DisplayAlert("Login", feed.Mensagem, "OK");
                     else
                         App.Current.MainPage = new MasterPage.Menu();
                 }
                 catch (Exception ex)
                 {
-
-                    
+                    await DisplayAlert("Login", ex.Message, "OK");
+                }
+                finally
+                {
+                    imgLogin.IsVisible = false;
                 }
             };
             btnEsqueciSenha.Clicked += async (sender, e) =>
@@ -42,7 +45,7 @@ namespace Inclock.View
                     {
                         DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Informe seu login primeiro");
                         Animation am = new Animation();
-                        txtlogin.Focus();                        
+                        txtlogin.Focus();
                     }
                     DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Sua senha foi enviada para o seu email");
                 }

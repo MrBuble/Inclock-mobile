@@ -2,17 +2,21 @@
 <ContentPage
     x:Class="Inclock.View.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    >
+
     <ContentPage.Content>
         <StackLayout>
-
+    
             <StackLayout Padding="20">
+
                 <Image
                     Aspect="AspectFill"
                     HorizontalOptions="Center"
                     Source="icon.png"
                     VerticalOptions="Center" />
-            </StackLayout>
+            </StackLayout> 
             <StackLayout
                 Padding="50,0"
                 HorizontalOptions="FillAndExpand"
@@ -40,6 +44,9 @@
                         Text="Esqueci a Senha"
                         VerticalOptions="Start" />
                 </StackLayout>
+                <ff:SvgCachedImage x:Name="imgLogin"  IsVisible="False" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" Source="loading.gif"></ff:SvgCachedImage>
+               
+
             </StackLayout>
             <StackLayout
                 Padding="20"
