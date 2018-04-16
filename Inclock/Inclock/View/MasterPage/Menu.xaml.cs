@@ -13,13 +13,12 @@ namespace Inclock.View.MasterPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menu : MasterDetailPage
     {
-        public Menu()
+        public Menu( )
         {
             InitializeComponent();
-            MasterPage.lvItensMenu.ItemSelected += LvItensMenu_ItemSelected;
-            
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(View.NavigatePages.Avisos)));
-       
+            MasterPage.lvItensMenu.ItemSelected += LvItensMenu_ItemSelected;            
+
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(View.NavigatePages.Avisos)));       
         }
 
         private void LvItensMenu_ItemSelected(object sender, SelectedItemChangedEventArgs e)

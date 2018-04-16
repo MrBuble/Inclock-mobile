@@ -19,12 +19,12 @@ namespace Inclock.Droid.Frameworks
     {
         public void LongAlert(string Mensage)
         {
-            Toast.MakeText(Application.Context, Mensage, ToastLength.Long);
+            Toast.MakeText(Application.Context, Mensage, ToastLength.Long).Show();
         }
 
         public void ShortAlert(string Mensage)
         {
-            Toast.MakeText(Application.Context, Mensage, ToastLength.Short);
+            Toast.MakeText(Application.Context, Mensage, ToastLength.Short).Show();
         }
     }
 }

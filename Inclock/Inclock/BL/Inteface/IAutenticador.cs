@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Inclock.BL.Inteface
 {
@@ -13,7 +14,7 @@ namespace Inclock.BL.Inteface
         /// <param name="password"></param>
         /// <param name="login"></param>
         /// <returns></returns>
-        Funcionario Logar(string password, string login);
+        Task<Funcionario> LogarAsync(string password, string login);
         string GetLogin(string Email);
         string GetPassword(string Login);
         List<Ponto> GetCheckPointDateInterval(string InitialDate, string FinalDate, string id_funcionario);

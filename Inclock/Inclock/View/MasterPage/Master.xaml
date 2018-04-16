@@ -8,35 +8,35 @@
         <ListView x:Name="lvDetalhes" ItemsSource="{Binding MenuItems}}">
             <ListView.Header>
                 <Grid BackgroundColor="#03A9F4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="10" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="80" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="10" />
-                    </Grid.RowDefinitions>
                     <StackLayout
-                        Padding="10,0,20,10"
-                        Orientation="Horizontal"
+                        Padding="30,0,20,10"
                         Spacing="15"
                         VerticalOptions="FillAndExpand">
-                        <Image Source="icon.png" VerticalOptions="Center" />
-                        <Label
-                            Grid.Row="2"
-                            Grid.Column="1"
-                            FontSize="Large"
-                            Text="Inclock"
-                            VerticalOptions="Center" />
+                        <Image
+                            HorizontalOptions="Start"
+                            Source="user_defalt.png"
+                            VerticalOptions="Start" />
+                        <StackLayout Spacing="5" VerticalOptions="FillAndExpand">
+                            <Label
+                                x:Name="lblNomeFuncionario"
+                                FontSize="Small"
+                                HorizontalOptions="StartAndExpand"
+                                Text="Nome do Funcionario"
+                                TextColor="White"
+                                VerticalOptions="End" />
+                            <Label
+                                x:Name="lblEmailFuncionario"
+                                FontSize="Small"
+                                HorizontalOptions="StartAndExpand"
+                                Text="email@email.com"
+                                TextColor="White"
+                                VerticalOptions="End" />
+                        </StackLayout>
                     </StackLayout>
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
-
                     <ViewCell>
                         <StackLayout Padding="20,10,0,10" Orientation="Horizontal">
                             <Image

@@ -21,10 +21,11 @@ namespace Inclock.View
             {
                 try
                 {
+                    ValidaCampos();
                     imgLogin.IsVisible = true;
                     FeedBack feed = await BL.Login.Logar(txtlogin.Text, txtSenha.Text);
                     if (!feed.Status)
-                        await DisplayAlert("Login", feed.Mensagem, "OK");
+                        await DisplayAlert("Erro", feed.Mensagem, "OK");
                     else
                         App.Current.MainPage = new MasterPage.Menu();
                 }
@@ -39,21 +40,25 @@ namespace Inclock.View
             };
             btnEsqueciSenha.Clicked += async (sender, e) =>
             {
-                if (await DisplayAlert("Esqueci a senha", "Deseja Envia sua senha por email", "Sim", "Não"))
+                bool dialog = await DisplayAlert("Esqueci a senha", "Deseja Envia sua senha por email", "Sim", "Não");
+                if (dialog)
                 {
                     if (string.IsNullOrEmpty(txtlogin.Text))
                     {
                         DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Informe seu login primeiro");
-                        Animation am = new Animation();
-                        txtlogin.Focus();
+                        //  txtlogin.Focus();
                     }
-                    DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Sua senha foi enviada para o seu email");
+                    else
+                        DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Sua senha foi enviada no seu email");
                 }
 
             };
         }
 
         public void ValidaCampos()
-        { }
+        {
+            if (string.IsNullOrEmpty(txtlogin.Text) || string.IsNullOrEmpty(txtSenha.Text))
+                throw new Exception("Preencha todos os campos ", new Exception("Erro humano"));
+        }
     }
 }

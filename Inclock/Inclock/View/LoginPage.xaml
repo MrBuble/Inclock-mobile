@@ -3,20 +3,19 @@
     x:Class="Inclock.View.LoginPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    >
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
 
     <ContentPage.Content>
         <StackLayout>
-    
+
             <StackLayout Padding="20">
 
                 <Image
                     Aspect="AspectFill"
                     HorizontalOptions="Center"
-                    Source="icon.png"
+                    Source="logo.png"
                     VerticalOptions="Center" />
-            </StackLayout> 
+            </StackLayout>
             <StackLayout
                 Padding="50,0"
                 HorizontalOptions="FillAndExpand"
@@ -34,19 +33,26 @@
                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                     <Button
                         x:Name="btnLogar"
+                        BackgroundColor="Transparent"
                         HorizontalOptions="Start"
                         Text="Logar"
                         VerticalOptions="Start" />
 
                     <Button
                         x:Name="btnEsqueciSenha"
+                        BackgroundColor="Transparent"
                         HorizontalOptions="End"
                         Text="Esqueci a Senha"
                         VerticalOptions="Start" />
                 </StackLayout>
-                <ff:SvgCachedImage x:Name="imgLogin"  IsVisible="False" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" Source="loading.gif"></ff:SvgCachedImage>
-               
-
+                <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <ff:SvgCachedImage
+                        x:Name="imgLogin"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="False"
+                        Source="loading.gif"
+                        VerticalOptions="CenterAndExpand" />
+                </AbsoluteLayout>
             </StackLayout>
             <StackLayout
                 Padding="20"

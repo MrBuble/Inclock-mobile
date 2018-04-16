@@ -22,9 +22,10 @@ namespace Inclock.Droid
            
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FFImageLoading.Forms.Droid.CachedImageRenderer.Init(true);
+          
 
-        
-            LoadApplication(new App());
+            LoadApplication(new App());       
+
         }
     }
 }

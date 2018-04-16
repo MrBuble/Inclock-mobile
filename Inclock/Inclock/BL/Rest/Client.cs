@@ -11,7 +11,7 @@ namespace Inclock.BL.Rest
     /// <summary>
     /// 
     /// </summary>
-    public class Client : Metodos
+    public class Client:Inteface.IAutenticador
     {
 
         private const string URI = "http://inclock.gearhostpreview.com/Service.svc/";
@@ -21,6 +21,46 @@ namespace Inclock.BL.Rest
 
 
         }
+
+        public FeedBack CheckPoint(Ponto ponto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Ponto> GetCheckPointByDate(string InitialDate, string FinalDate, string id_funcionario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetCheckPointById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Ponto> GetCheckPointDateInterval(string InitialDate, string FinalDate, string id_funcionario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Expediente> GetExpediente(string semana, string funcionario_Id)
+        {
+            throw new NotImplementedException();
+        }
+      
+        public string GetLogin(string Email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPassword(string Login)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Funcionario GetUserById(string id)
+        {
+            throw new NotImplementedException();
+        }     
 
         public async Task<Funcionario> LogarAsync(string login, string senha)
         {
