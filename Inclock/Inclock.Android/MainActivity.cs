@@ -22,8 +22,7 @@ namespace Inclock.Droid
            
             global::Xamarin.Forms.Forms.Init(this, bundle);
             FFImageLoading.Forms.Droid.CachedImageRenderer.Init(true);
-          
-
+            ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);            
             LoadApplication(new App());       
 
         }

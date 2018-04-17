@@ -7,7 +7,7 @@ using ZXing.QrCode;
 using System.Threading.Tasks;
 namespace Inclock.ViewModels
 {
-    class GetQrViewModel : INotifyPropertyChanged
+    public class GetQrViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private string stQrCode;
@@ -24,14 +24,5 @@ namespace Inclock.ViewModels
         {
 
         }
-        public void Get()
-        {
-            ZXing.Mobile.MobileBarcodeScanner et = new ZXing.Mobile.MobileBarcodeScanner();
-
-          
-            var result = et.Scan();
-            StQrCode = result.Result.ToString();
-        }
-
     }
 }

@@ -19,9 +19,7 @@ namespace Inclock.View.MasterPage
         {
             InitializeComponent();
             BindingContext = new ViewModels.MasterPageItensViewModel();
-            lvItensMenu = lvDetalhes;
-            
-      
+            lvItensMenu = lvDetalhes;      
         }
 
        
