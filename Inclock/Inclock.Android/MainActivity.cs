@@ -18,12 +18,13 @@ namespace Inclock.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-            
-           
+
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            ZXing.Net.Mobile.Forms.Android.Platform.Init();
             FFImageLoading.Forms.Droid.CachedImageRenderer.Init(true);
-            ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);            
-            LoadApplication(new App());       
+
+            LoadApplication(new App());
 
         }
     }
