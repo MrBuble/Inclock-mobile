@@ -1,5 +1,6 @@
 ﻿
 using Inclock.VO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -11,10 +12,10 @@ namespace Inclock.BL.Rest
     /// <summary>
     /// 
     /// </summary>
-    public class Client:Inteface.IAutenticador
+    public class Client : Inteface.IAutenticador
     {
 
-        private const string URI = "http://inclock.gearhostpreview.com/Service.svc/";
+        private const string URI = "http://inclock.gearhostpreview.com/Service.svc/rest/";
 
         public Client()
         {
@@ -22,9 +23,15 @@ namespace Inclock.BL.Rest
 
         }
 
-        public FeedBack CheckPoint(Ponto ponto)
+        public async Task<FeedBack> CheckPoint(Ponto ponto)
         {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                StringContent argumento = new StringContent(JsonConvert.SerializeObject(ponto));
+                HttpResponseMessage response = await client.PostAsync(URI + "CheckPoint", argumento);
+                string json = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<FeedBack>(json);
+            }
         }
 
         public List<Ponto> GetCheckPointByDate(string InitialDate, string FinalDate, string id_funcionario)
@@ -46,7 +53,7 @@ namespace Inclock.BL.Rest
         {
             throw new NotImplementedException();
         }
-      
+
         public string GetLogin(string Email)
         {
             throw new NotImplementedException();
@@ -60,13 +67,13 @@ namespace Inclock.BL.Rest
         public Funcionario GetUserById(string id)
         {
             throw new NotImplementedException();
-        }     
+        }
 
         public async Task<Funcionario> LogarAsync(string login, string senha)
         {
             HttpClient client = new HttpClient();
             var json = await client.GetStringAsync(URI + "logar/" + senha + "/" + senha);
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Funcionario>(json);
+            return JsonConvert.DeserializeObject<Funcionario>(json);
         }
     }
 }

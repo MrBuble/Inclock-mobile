@@ -16,17 +16,16 @@ namespace Inclock.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ZXing.Mobile.MobileBarcodeScanner.Initialize(Application);
 
-            ZXing.Net.Mobile.Forms.Android.Platform.Init();
-            FFImageLoading.Forms.Droid.CachedImageRenderer.Init(true);
-
+            global::FFImageLoading.Forms.Droid.CachedImageRenderer.Init(true);
             LoadApplication(new App());
-
-        }
+     
+        }       
+      
     }
 }
 

@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<CarouselPage
     x:Class="Inclock.View.NavigatePages.Avisos"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <ContentPage.Content>
+    <ContentPage>
         <StackLayout>
+            <Image
+                HorizontalOptions="FillAndExpand"
+                Source="{Binding Imagem}"
+                VerticalOptions="FillAndExpand" />
             <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" />
+                x:Name="txtConteudo"
+                HorizontalOptions="Center"
+                Text="{Binding Conteudo}" />
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </ContentPage>
+</CarouselPage>

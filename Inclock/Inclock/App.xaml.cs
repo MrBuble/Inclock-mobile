@@ -5,6 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 
+
 namespace Inclock
 {
     public partial class App : Application
@@ -13,8 +14,9 @@ namespace Inclock
         {
             InitializeComponent();
 
-               MainPage = new View.LoginPage();       
-           
+            //  MainPage = new View.LoginPage(); 
+            MainPage = new View.MasterPage.Menu();
+
         }
 
         protected override void OnStart()
@@ -31,5 +33,7 @@ namespace Inclock
         {
             // Handle when your app resumes
         }
+
+    
     }
 }

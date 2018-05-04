@@ -21,7 +21,7 @@ namespace Inclock.BL.Inteface
         List<Ponto> GetCheckPointByDate(string InitialDate, string FinalDate, string id_funcionario);
         string GetCheckPointById(int id);
         Funcionario GetUserById(string id);
-        FeedBack CheckPoint(Ponto ponto);
+        Task<FeedBack> CheckPoint(Ponto ponto);
         List<Expediente> GetExpediente(string semana, string funcionario_Id);
     }
 }

@@ -21,7 +21,6 @@ namespace Inclock.BL
                 feed = new FeedBack() { Status = false, Mensagem = "Login ou senha estão incorretos" };
             else
                 feed = new FeedBack() { Status = true };
-
             return feed;
         }
        
