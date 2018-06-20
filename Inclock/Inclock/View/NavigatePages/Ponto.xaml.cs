@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inclock.BL.Inteface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,15 +16,20 @@ namespace Inclock.View.NavigatePages
         public ViewModels.GetQrViewModel ViewModel = new Inclock.ViewModels.GetQrViewModel();
         public Ponto()
         {
+
             InitializeComponent();
-            lblQrCode.BindingContext = ViewModel;
+
+            //lblQrCode.BindingContext = ViewModel;
+              zxReader.BindingContext = new ViewModels.GetQrViewModel();
+            
             btnBateEntrada.Clicked += BtnBateEntrada_Clicked;
         }
+
 
         private void BtnBateEntrada_Clicked(object sender, EventArgs e)
         {
             ZXing.Mobile.MobileBarcodeScanner reader = new ZXing.Mobile.MobileBarcodeScanner();
-            
+
             ZXing.Mobile.MobileBarcodeScanningOptions options = new ZXing.Mobile.MobileBarcodeScanningOptions();
             options.PossibleFormats = new List<ZXing.BarcodeFormat> { ZXing.BarcodeFormat.QR_CODE, ZXing.BarcodeFormat.RSS_14 };
             reader.BottomText = "Scanner";
@@ -32,10 +38,11 @@ namespace Inclock.View.NavigatePages
             reader.AutoFocus();
             reader.FlashButtonText = "Flash";
 
-            
+
             ZXing.Mobile.MobileBarcodeScanner ss = new ZXing.Mobile.MobileBarcodeScanner();
-            var codigo = reader.Scan(options);           
-                ViewModel.StQrCode = codigo.Result.ToString();
+
+            //     var codigo = reader.Scan(options);           
+            //       ViewModel.StQrCode = codigo.Result.ToString();
 
         }
     }

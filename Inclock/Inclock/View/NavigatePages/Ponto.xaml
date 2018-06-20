@@ -2,9 +2,30 @@
 <ContentPage
     x:Class="Inclock.View.NavigatePages.Ponto"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:zxReader="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+    BackgroundColor="Transparent">
+
     <StackLayout>
-        <Label x:Name="lblQrCode" Text="{Binding StQrCode}" />
+        <!--<Label x:Name="lblQrCode" Text="{Binding StQrCode}" />-->
+        <StackLayout BackgroundColor="Transparent" />
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <zxReader:ZXingScannerView
+                x:Name="zxReader"
+                AutomationId="ZXingScannerView"
+                InputTransparent="True"
+                IsAnalyzing="True"
+                IsScanning="True"
+                IsTorchOn="True"
+                Result="{Binding Result, Mode=TwoWay}"
+                ScanResultCommand="QRScanResultCommand" />
+            <zxReader:ZXingDefaultOverlay
+                x:Name="overlay"
+                AutomationId="ZXingDefaultOverlay"
+                BackgroundColor="Transparent"
+                BottomText="Aponte para o Qr Code"
+                TopText="Bater a entrada" />
+        </Grid>
         <Button
             x:Name="btnBateEntrada"
             HorizontalOptions="Center"
