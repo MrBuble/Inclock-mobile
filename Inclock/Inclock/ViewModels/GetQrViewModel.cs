@@ -12,7 +12,29 @@ namespace Inclock.ViewModels
 {
     public class GetQrViewModel : INotifyPropertyChanged
     {
-        public ZXing.Result result { get; set; }
+
+        public ZXing.Result Result { get; set; }
+        private bool isAnalyzing = true;
+        public bool IsAnalyzing
+        {
+            get { return isAnalyzing; }
+            set
+            {
+                isAnalyzing = value;
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(IsAnalyzing)));
+            }
+        }
+
+        private bool isScanning = true;
+        public bool IsScanning
+        {
+            get { return isScanning; }
+            set
+            {
+                isScanning = value;
+                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(IsScanning)));
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private string stQrCode;
         public string StQrCode
@@ -33,12 +55,14 @@ namespace Inclock.ViewModels
             get
             {
                 return new Command(() =>
-                {               
-                    Device.BeginInvokeOnMainThread( () =>
-                    {
-                         DependencyService.Get<IToast>().ShortAlert(result.Text);
-                        //do your job here - Result.Text contains QR CODE
-                    });
+                {
+                    IsAnalyzing = false;
+                    IsScanning = false;
+                    Device.BeginInvokeOnMainThread(() =>
+                   {
+                       DependencyService.Get<IToast>().ShortAlert(Result.Text);
+                       //do your job here - Result.Text contains QR CODE
+                   });
                 });
             }
         }

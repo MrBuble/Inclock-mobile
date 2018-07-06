@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Inclock.View.NavigatePages.Menu"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <Button
+                    x:Name="btnEntrada"
+                    BackgroundColor="Transparent"
+                    BorderWidth="0"
+                    HorizontalOptions="Start"
+                    Text="Entrada" />
+                <Button
+                    x:Name="btnSaida"
+                    BackgroundColor="Transparent"
+                    BorderWidth="0"
+                    HorizontalOptions="End"
+                    Text="Saida" />
+            </StackLayout>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Entry Text="aviso entra aqui em baixo" />
+            </StackLayout>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

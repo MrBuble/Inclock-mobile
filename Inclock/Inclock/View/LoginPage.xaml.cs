@@ -44,7 +44,7 @@ namespace Inclock.View
                 if (!feed.Status)
                     await DisplayAlert("Erro", feed.Mensagem, "OK");
                 else
-                    App.Current.MainPage = new MasterPage.Menu();
+                    App.Current.MainPage = new NavigatePages.Menu();
             }
             catch (Exception ex)
             {

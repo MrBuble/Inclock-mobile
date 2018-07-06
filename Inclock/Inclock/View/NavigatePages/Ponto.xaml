@@ -14,8 +14,8 @@
                 x:Name="zxReader"
                 AutomationId="ZXingScannerView"
                 InputTransparent="True"
-                IsAnalyzing="True"
-                IsScanning="True"
+                IsAnalyzing="{Binding IsAnalyzing}"
+                IsScanning="{Binding IsScanning}"
                 IsTorchOn="True"
                 Result="{Binding Result, Mode=TwoWay}"
                 ScanResultCommand="QRScanResultCommand" />
