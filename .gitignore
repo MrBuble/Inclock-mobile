@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs/Inclock/v15
+/Inclock/Inclock/obj
+/Inclock/Inclock.iOS/obj
+/Inclock/Inclock/bin/Debug/netstandard2.0
+/Inclock/Inclock.Android/bin/Debug
+/Inclock/Inclock.Android/obj
