@@ -28,7 +28,7 @@ namespace Inclock.View
             {
                 if (string.IsNullOrEmpty(txtlogin.Text))
                 {
-                    DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Informe seu login primeiro");
+                    DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Informe seu Email");
                 }
                 else
                     DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Sua senha foi enviada no seu email");
@@ -44,7 +44,7 @@ namespace Inclock.View
                 if (!feed.Status)
                     await DisplayAlert("Erro", feed.Mensagem, "OK");
                 else
-                    App.Current.MainPage = new NavigatePages.Menu();
+                    Application.Current.MainPage = new master.Menu();
             }
             catch (Exception ex)
             {

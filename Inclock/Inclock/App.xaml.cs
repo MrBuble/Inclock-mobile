@@ -14,8 +14,8 @@ namespace Inclock
         {
             InitializeComponent();
 
-            //  MainPage = new View.LoginPage(); 
-            MainPage = new View.NavigatePages.Menu();
+              MainPage = new View.LoginPage(); 
+         //   MainPage = new View.NavigatePages.Menu();
 
         }
 

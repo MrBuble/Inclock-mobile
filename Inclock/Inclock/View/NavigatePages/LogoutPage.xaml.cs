@@ -23,7 +23,7 @@ namespace Inclock.View.NavigatePages
         private void Logout()
         {
             // Cria o Metodo para efetuar o logout
-            App.Current.MainPage = new Inclock.View.LoginPage();
+            Application.Current.MainPage = new Inclock.View.LoginPage();
         }
     }
 }

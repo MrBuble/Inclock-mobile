@@ -25,22 +25,16 @@
     <Compile Update="MasterDetailPage1MenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\master\menu2.xaml.cs">
-      <DependentUpon>menu2.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="View\master\menuMaster2.xaml.cs">
-      <DependentUpon>menuMaster2.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="MasterDetailPage1Detail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\master\menu2.xaml">
+    <EmbeddedResource Update="View\master\Menu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\master\menuMaster2.xaml">
+    <EmbeddedResource Update="View\master\MenuMaster.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\NavigatePages\Avisos.xaml">
