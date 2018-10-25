@@ -9,14 +9,14 @@ using Xamarin.Forms.Xaml;
 
 namespace Inclock.View.master
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class Menu : MasterDetailPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Menu : MasterDetailPage
     {
-		public Menu ()
-		{
-			InitializeComponent ();
+        public Menu(string user = "")
+        {
+            InitializeComponent();
+            Detail = new NavigationPage(new View.NavigatePages.Avisos());
             MastePage.ListView.ItemSelected += ListView_ItemSelected;
-            Detail = new NavigationPage( new View.NavigatePages.Avisos());
         }
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

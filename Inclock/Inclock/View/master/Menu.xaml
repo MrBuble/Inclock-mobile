@@ -4,14 +4,12 @@
              x:Class="Inclock.View.master.Menu"
              xmlns:pages="clr-namespace:Inclock.View.master"
                   Title="Inclock">
-    <MasterDetailPage.Master>        
-        <pages:MenuMaster x:Name="MastePage" />
+    <MasterDetailPage.Master>
+        <pages:MenuMaster x:Name="MastePage" Title="Menu" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>
-            <x:Arguments>
-                <!-- pages:menuDetail / -->
-            </x:Arguments>
+          
         </NavigationPage>
     </MasterDetailPage.Detail>
 </MasterDetailPage>

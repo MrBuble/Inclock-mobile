@@ -16,9 +16,9 @@ namespace Inclock.View.master
         public MenuMaster ()
 		{
 			InitializeComponent ();
-
-            BindingContext = new ViewModels.MenuViewModel();
+        
             ListView = MenuItemsListView;
+            ListView.ItemsSource = new ViewModels.MenuViewModel().Paginas;
         }
 	}
 }

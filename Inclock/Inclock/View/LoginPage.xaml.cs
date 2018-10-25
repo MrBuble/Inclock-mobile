@@ -40,11 +40,14 @@ namespace Inclock.View
             {
                 ValidaCampos();
                 imgLogin.IsVisible = true;
-                FeedBack feed = await BL.Login.Logar(txtlogin.Text, txtSenha.Text);
-                if (!feed.Status)
-                    await DisplayAlert("Erro", feed.Mensagem, "OK");
+                var user = await BL.Login.Logar(txtlogin.Text, txtSenha.Text);
+                if (user.Id == 0)
+                    await DisplayAlert("Erro", "Login ou senha estão incorretos", "OK");
                 else
+                {
+
                     Application.Current.MainPage = new master.Menu();
+                }
             }
             catch (Exception ex)
             {

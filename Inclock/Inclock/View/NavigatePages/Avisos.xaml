@@ -13,6 +13,7 @@
                 x:Name="txtConteudo"
                 HorizontalOptions="Center"
                 Text="{Binding Conteudo}" />
+            <Label Text="Avisos"></Label>
         </StackLayout>
     </ContentPage>
 </CarouselPage>
