@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using SQLite;
-using SQLitePCL;
+using Microsoft.EntityFrameworkCore;
 namespace Inclock.BL.SqlLite
 {
-    public class DataBase
+    public class DataBase : DbContext
     {
-        public SQLiteConnection db { get; set; } = new SQLiteConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "dbo.db3"));
-        public  void  CreateTable<T>()
+        public DbSet<User> Users { get; set; }
+        private string _ConnectionString;
+        public DataBase(string connectionString)
         {
-            db.CreateTable<T>();            
-        }      
+            _ConnectionString = Path.Combine(connectionString, "mwd.db");
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite($"Filename={_ConnectionString}");
+        }
     }
 }

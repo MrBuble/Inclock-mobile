@@ -8,9 +8,8 @@ using page = Inclock.View.NavigatePages;
 
 namespace Inclock.ViewModels
 {
-    class MenuViewModel : INotifyPropertyChanged
+    class MenuViewModel 
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<VO.MasterPageItem> Paginas;
 
         public MenuViewModel()
@@ -21,14 +20,5 @@ namespace Inclock.ViewModels
                 new VO.MasterPageItem() { Title = "Sair", TargetType = typeof(page.LogoutPage) }
             };
         }
-        #region INotifyPropertyChanged Implementation       
-        void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            if (PropertyChanged == null)
-                return;
-
-            PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 using Foundation;
@@ -26,6 +27,7 @@ namespace Inclock.iOS
             global::Xamarin.Forms.Forms.Init();            
             FFImageLoading.Forms.Touch.CachedImageRenderer.Init();
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+            SQLitePCL.Batteries.Init();
             LoadApplication(new App());
          
 

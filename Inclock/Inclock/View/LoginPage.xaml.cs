@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Inclock.BL.SqlLite;
 
 namespace Inclock.View
 {
@@ -45,7 +46,7 @@ namespace Inclock.View
                     await DisplayAlert("Erro", "Login ou senha estão incorretos", "OK");
                 else
                 {
-
+                    await BL.Login.CreateSession(user, DependencyService.Get<IConfig>().StringConnection);
                     Application.Current.MainPage = new master.Menu();
                 }
             }

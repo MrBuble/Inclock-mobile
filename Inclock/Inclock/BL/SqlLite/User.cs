@@ -2,16 +2,24 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using SQLite;
+
 namespace Inclock.BL.SqlLite
 {
-    [Table("user")]
-    class User
+
+    public class User
     {
-        private readonly DataBase Data = new DataBase();
         public User()
         {
 
         }
+
+        public int ID { get; set; }
+
+        public string Nome { get; set; }
+
+        public string UserJson { get; set; }
+
+        public string DataCriacao { get; set; }
+
     }
 }

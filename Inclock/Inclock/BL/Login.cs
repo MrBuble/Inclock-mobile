@@ -15,9 +15,18 @@ namespace Inclock.BL
         public static async Task<Funcionario> Logar(string login, string senha)
         {
             FeedBack feed;
-            Client cliente = new Client();      
-            return await cliente.LogarAsync(login, senha); 
+            Client cliente = new Client();
+            return await cliente.LogarAsync(login, senha);
         }
-       
+        public static Task<bool> CreateSession(Funcionario func,string dataBase)
+        {
+            var task = new Task<bool>(() => true);
+            using (var ctx = new SqlLite.DataBase(dataBase))
+            {
+
+            } 
+
+            return task;
+        }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Xamarin.Forms;
 
 
@@ -14,8 +13,8 @@ namespace Inclock
         {
             InitializeComponent();
 
-         //      MainPage = new View.LoginPage(); 
-           MainPage = new View.master.Menu();
+            MainPage = new View.LoginPage();
+            //    MainPage = new View.master.Menu();
 
         }
 
@@ -34,6 +33,6 @@ namespace Inclock
             // Handle when your app resumes
         }
 
-    
+
     }
 }
