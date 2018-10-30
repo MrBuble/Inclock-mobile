@@ -9,7 +9,7 @@
               SeparatorVisibility="None"                     
               HasUnevenRows="true">
             <ListView.Header>
-                <Grid BackgroundColor="Blue">
+                <Grid  BackgroundColor="#1F96FB">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="*"/>
@@ -26,18 +26,26 @@
                           Grid.Column="1"
                           Grid.Row="2"
                           Text="Usuario"
-                          Style="{DynamicResource SubtitleStyle}"/>     
+                        TextColor="White"
+                          Style="{DynamicResource SubtitleStyle}"/>
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-                            <Label VerticalOptions="FillAndExpand" 
-                    VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
-                    FontSize="Default"/>
-                        </StackLayout>
+                        <Grid Padding="5,10" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Icon}"  />
+                            <Label VerticalOptions="FillAndExpand" Margin="2"
+                                VerticalTextAlignment="Center" 
+                                Text="{Binding Title}" 
+                                FontSize="Default"
+                                Grid.Column="1"/>       
+                        </Grid>
+
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

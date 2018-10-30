@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inclock.Android", "Inclock\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inclock.iOS", "Inclock\Inclock.iOS\Inclock.iOS.csproj", "{BCECFE66-6B75-409A-B836-C437A69845AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inclock", "Inclock\Inclock\Inclock.csproj", "{FA9D9688-3231-4944-8E99-9D427C0D74F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inclock", "Inclock\Inclock\Inclock.csproj", "{FA9D9688-3231-4944-8E99-9D427C0D74F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

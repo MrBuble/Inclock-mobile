@@ -12,8 +12,10 @@ namespace Inclock
         public App()
         {
             InitializeComponent();
-
-            MainPage = new View.LoginPage();
+            if (BL.Login.Autenticar())
+                MainPage = new View.master.Menu();
+            else
+                MainPage = new View.LoginPage();
             //    MainPage = new View.master.Menu();
 
         }

@@ -1,11 +1,13 @@
 ﻿
 using Inclock.VO;
 using Inclock.BL.Rest;
+using System.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Inclock.BL.SqlLite;
 using Inclock.BL.Inteface;
 
 namespace Inclock.BL
@@ -18,15 +20,29 @@ namespace Inclock.BL
             Client cliente = new Client();
             return await cliente.LogarAsync(login, senha);
         }
-        public static Task<bool> CreateSession(Funcionario func,string dataBase)
+        public static bool CreateSession(Funcionario func)
         {
-            var task = new Task<bool>(() => true);
-            using (var ctx = new SqlLite.DataBase(dataBase))
+           
+            SqlLite.DataBase db = new DataBase(DependencyService.Get<IConfig>().StringConnection);
+            db.connection.DropTable<SqlLite.User>();
+            db.connection.CreateTable<SqlLite.User>();
+            var ln = db.connection.Insert(new SqlLite.User { ID = func.Id, Nome = func.Nome, UserJson = Newtonsoft.Json.JsonConvert.SerializeObject(func), DataCriacao = DateTime.Now.ToString("dd/MM/yyyy") });
+            return ln > 0;
+        }
+
+        public static bool Autenticar()
+        {
+            using (var db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
             {
-
-            } 
-
-            return task;
+                return db.connection.Table<SqlLite.User>().Any();
+            }
+        }
+        public static SqlLite.User GetCurrentUser()
+        {
+            using (var db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
+            {
+               return db.connection.Table<SqlLite.User>().FirstOrDefault();
+            }
         }
     }
 }

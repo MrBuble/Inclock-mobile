@@ -8,16 +8,17 @@ using page = Inclock.View.NavigatePages;
 
 namespace Inclock.ViewModels
 {
-    class MenuViewModel 
+    class MenuViewModel
     {
         public ObservableCollection<VO.MasterPageItem> Paginas;
 
         public MenuViewModel()
         {
             Paginas = new ObservableCollection<VO.MasterPageItem>() {
-                new VO.MasterPageItem() { Title = "Avisos", TargetType = typeof(page.Avisos) },
-                new VO.MasterPageItem() { Title = "Ponto", TargetType = typeof(page.Ponto) },
-                new VO.MasterPageItem() { Title = "Sair", TargetType = typeof(page.LogoutPage) }
+                new VO.MasterPageItem() { Title = "Avisos", TargetType = typeof(page.Avisos),Icon = "alerta.png" },
+                new VO.MasterPageItem() { Title = "Bater Entrada", TargetType = typeof(page.Ponto), Icon = "PontoEntrada.png" },
+                new VO.MasterPageItem() { Title = "Bater Saida", TargetType = typeof(page.Ponto), Icon = "PontoSaida.png" },
+                new VO.MasterPageItem() { Title = "Logout", TargetType = typeof(page.LogoutPage), Icon = "sair.png"}
             };
         }
     }

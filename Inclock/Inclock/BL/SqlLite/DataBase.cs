@@ -1,21 +1,25 @@
-﻿using System;
+﻿using SQLitePCL;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
+
 namespace Inclock.BL.SqlLite
 {
-    public class DataBase : DbContext
+    public class DataBase:IDisposable
     {
-        public DbSet<User> Users { get; set; }
+
         private string _ConnectionString;
+        public SQLite.SQLiteConnection connection { get; set; }
         public DataBase(string connectionString)
-        {
+        {           
             _ConnectionString = Path.Combine(connectionString, "mwd.db");
+            connection = new SQLite.SQLiteConnection(_ConnectionString);
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public void Dispose()
         {
-            optionsBuilder.UseSqlite($"Filename={_ConnectionString}");
+            GC.SuppressFinalize(this);
         }
     }
 }

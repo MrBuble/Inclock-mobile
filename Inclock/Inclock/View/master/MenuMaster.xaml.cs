@@ -16,9 +16,10 @@ namespace Inclock.View.master
         public MenuMaster ()
 		{
 			InitializeComponent ();
-        
+            
             ListView = MenuItemsListView;
             ListView.ItemsSource = new ViewModels.MenuViewModel().Paginas;
+            lblUsuario.Text = BL.Login.GetCurrentUser().Nome;
         }
 	}
 }

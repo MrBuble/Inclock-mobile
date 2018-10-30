@@ -3,5 +3,6 @@
   <PropertyGroup>
     <SelectedDevice>Live Player</SelectedDevice>
     <TargetiOSDevice />
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
 </Project>

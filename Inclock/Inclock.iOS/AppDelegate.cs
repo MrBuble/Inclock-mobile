@@ -24,10 +24,11 @@ namespace Inclock.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            SQLitePCL.Batteries.Init();
             global::Xamarin.Forms.Forms.Init();            
             FFImageLoading.Forms.Touch.CachedImageRenderer.Init();
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
-            SQLitePCL.Batteries.Init();
+           
             LoadApplication(new App());
          
 

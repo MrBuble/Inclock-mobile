@@ -15,13 +15,12 @@ namespace Inclock.View
     public partial class LoginPage : ContentPage
     {
         public LoginPage()
-        {
-            InitializeComponent();
-
+        {  
+            InitializeComponent();          
             btnLogar.Clicked += BtnLogar_Clicked;
             btnEsqueciSenha.Clicked += BtnEsqueciSenha_Clicked;
         }
-
+      
         private async void BtnEsqueciSenha_Clicked(object sender, EventArgs e)
         {
             bool dialog = await DisplayAlert("Esqueci a senha", "Deseja Envia sua senha por email", "Sim", "Não");
@@ -44,11 +43,13 @@ namespace Inclock.View
                 var user = await BL.Login.Logar(txtlogin.Text, txtSenha.Text);
                 if (user.Id == 0)
                     await DisplayAlert("Erro", "Login ou senha estão incorretos", "OK");
+
                 else
                 {
-                    await BL.Login.CreateSession(user, DependencyService.Get<IConfig>().StringConnection);
+                    BL.Login.CreateSession(user);
                     Application.Current.MainPage = new master.Menu();
                 }
+
             }
             catch (Exception ex)
             {

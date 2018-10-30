@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Inclock.VO;
+using SQLite;
 
 namespace Inclock.BL.SqlLite
 {
-
+    [Table("User")]
     public class User
     {
         public User()
@@ -21,5 +23,9 @@ namespace Inclock.BL.SqlLite
 
         public string DataCriacao { get; set; }
 
+        public static Funcionario ToUser(User user)
+        {
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<Funcionario>(user.UserJson);
+        }
     }
 }
