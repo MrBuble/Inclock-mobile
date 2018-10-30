@@ -10,11 +10,11 @@ namespace Inclock.BL.SqlLite
     {
 
         private string _ConnectionString;
-        public SQLite.SQLiteConnection connection { get; set; }
+        public SQLite.SQLiteConnection Connection { get; set; }
         public DataBase(string connectionString)
         {           
             _ConnectionString = Path.Combine(connectionString, "mwd.db");
-            connection = new SQLite.SQLiteConnection(_ConnectionString);
+            Connection = new SQLite.SQLiteConnection(_ConnectionString);
         }
 
         public void Dispose()

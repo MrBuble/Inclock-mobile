@@ -22,7 +22,7 @@ namespace Inclock.View.NavigatePages
             //lblQrCode.BindingContext = ViewModel;
               zxReader.BindingContext = new ViewModels.GetQrViewModel();
             zxReader.Options.PossibleFormats.Add(ZXing.BarcodeFormat.QR_CODE); 
-            btnBateEntrada.Clicked += BtnBateEntrada_Clicked;            
+                       
         }        
 
         private void BtnBateEntrada_Clicked(object sender, EventArgs e)

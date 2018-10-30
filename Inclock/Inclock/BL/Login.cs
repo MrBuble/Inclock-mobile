@@ -24,9 +24,9 @@ namespace Inclock.BL
         {
            
             SqlLite.DataBase db = new DataBase(DependencyService.Get<IConfig>().StringConnection);
-            db.connection.DropTable<SqlLite.User>();
-            db.connection.CreateTable<SqlLite.User>();
-            var ln = db.connection.Insert(new SqlLite.User { ID = func.Id, Nome = func.Nome, UserJson = Newtonsoft.Json.JsonConvert.SerializeObject(func), DataCriacao = DateTime.Now.ToString("dd/MM/yyyy") });
+            db.Connection.DropTable<SqlLite.User>();
+            db.Connection.CreateTable<SqlLite.User>();
+            var ln = db.Connection.Insert(new SqlLite.User { ID = func.Id, Nome = func.Nome, UserJson = Newtonsoft.Json.JsonConvert.SerializeObject(func), DataCriacao = DateTime.Now.ToString("dd/MM/yyyy") });
             return ln > 0;
         }
 
@@ -34,14 +34,14 @@ namespace Inclock.BL
         {
             using (var db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
             {
-                return db.connection.Table<SqlLite.User>().Any();
+                return db.Connection.Table<SqlLite.User>().Any();
             }
         }
         public static SqlLite.User GetCurrentUser()
         {
             using (var db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
             {
-               return db.connection.Table<SqlLite.User>().FirstOrDefault();
+               return db.Connection.Table<SqlLite.User>().FirstOrDefault();
             }
         }
     }

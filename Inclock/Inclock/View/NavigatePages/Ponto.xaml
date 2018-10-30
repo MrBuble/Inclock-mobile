@@ -25,11 +25,6 @@
                 BackgroundColor="Transparent"
                 BottomText="Aponte para o Qr Code"
                 TopText="Bater a entrada" />
-        </Grid>
-        <Button
-            x:Name="btnBateEntrada"
-            HorizontalOptions="Center"
-            Text="Registrar a Entrada"
-            VerticalOptions="Center" />
+        </Grid>        
     </StackLayout>
 </ContentPage>
