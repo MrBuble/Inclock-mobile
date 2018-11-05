@@ -6,15 +6,15 @@ using Xamarin.Forms.Xaml;
 
 namespace Inclock.View.BaseQr
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    partial class BaseLeituraQr : ContentPage
+    
+    public partial class BaseLeituraQr 
     {
         public ViewModels.GetQrViewModel ViewModel = new Inclock.ViewModels.GetQrViewModel();
         public BaseLeituraQr()
-        {
-            
-            ZXReader.BindingContext = new ViewModels.GetQrViewModel();
+        {   InitializeComponent();
+            ZXReader.BindingContext = ViewModel;
             ZXReader.Options.PossibleFormats.Add(ZXing.BarcodeFormat.QR_CODE);
+         
         }
     }
 }

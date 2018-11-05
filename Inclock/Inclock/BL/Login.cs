@@ -22,7 +22,7 @@ namespace Inclock.BL
         }
         public static bool CreateSession(Funcionario func)
         {
-           
+
             SqlLite.DataBase db = new DataBase(DependencyService.Get<IConfig>().StringConnection);
             db.Connection.DropTable<SqlLite.User>();
             db.Connection.CreateTable<SqlLite.User>();
@@ -33,15 +33,19 @@ namespace Inclock.BL
         public static bool Autenticar()
         {
             using (var db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
-            {
-                return db.Connection.Table<SqlLite.User>().Any();
+            {                
+                if (db.Connection.GetTableInfo(nameof(SqlLite.User)).Count > 0)
+                {
+                    return db.Connection.Table<SqlLite.User>().Any();
+                }
+                return false;
             }
         }
         public static SqlLite.User GetCurrentUser()
         {
             using (var db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
             {
-               return db.Connection.Table<SqlLite.User>().FirstOrDefault();
+                return db.Connection.Table<SqlLite.User>().FirstOrDefault();
             }
         }
     }

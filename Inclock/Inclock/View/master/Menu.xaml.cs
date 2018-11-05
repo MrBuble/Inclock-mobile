@@ -15,7 +15,7 @@ namespace Inclock.View.master
         public Menu(string user = "")
         {
             InitializeComponent();
-            Detail = new NavigationPage(new View.NavigatePages.Avisos());
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(View.NavigatePages.Avisos)));
             MastePage.ListView.ItemSelected += ListView_ItemSelected;
         }
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

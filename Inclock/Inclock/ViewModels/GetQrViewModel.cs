@@ -12,8 +12,16 @@ namespace Inclock.ViewModels
 {
     public class GetQrViewModel : INotifyPropertyChanged
     {
-
-        public ZXing.Result Result { get; set; }
+        private ZXing.Result result;
+        public ZXing.Result Result
+        {
+            get { return result; }
+            set
+            {
+                result = value;
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Result)));
+            }
+        }
         private bool isAnalyzing = true;
         public bool IsAnalyzing
         {
@@ -21,7 +29,7 @@ namespace Inclock.ViewModels
             set
             {
                 isAnalyzing = value;
-                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(IsAnalyzing)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsAnalyzing)));
             }
         }
 
@@ -32,7 +40,7 @@ namespace Inclock.ViewModels
             set
             {
                 isScanning = value;
-                this.PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(IsScanning)));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsScanning)));
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
@@ -50,20 +58,25 @@ namespace Inclock.ViewModels
         {
 
         }
+        private Command command;
         public Command QRScanResultCommand
         {
             get
             {
-                return new Command(() =>
+                return new Command((xl) =>
                 {
+                    var xd = xl;
                     IsAnalyzing = false;
                     IsScanning = false;
                     Device.BeginInvokeOnMainThread(() =>
                    {
                        DependencyService.Get<IToast>().ShortAlert(Result.Text);
-                       //do your job here - Result.Text contains QR CODE
+
                    });
                 });
+            }
+            set {
+                command = value;
             }
         }
     }
