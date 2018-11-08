@@ -3,12 +3,22 @@
     x:Class="Inclock.View.NavigatePages.LogoutPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Sair"
-                VerticalOptions="CenterAndExpand" />
+        <Label Text="Deseja realmete sair?" />
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <Button
+                x:Name="btnSim"
+                BackgroundColor="Transparent"
+                HorizontalOptions="StartAndExpand"
+                Text="Sim"
+                VerticalOptions="StartAndExpand" />
+            <Button
+                x:Name="btnNao"
+                BackgroundColor="Transparent"
+                HorizontalOptions="StartAndExpand"
+                Text="Não"
+                VerticalOptions="StartAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

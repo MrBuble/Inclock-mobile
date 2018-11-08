@@ -22,18 +22,23 @@ namespace Inclock.BL
         }
         public static bool CreateSession(Funcionario func)
         {
-
             SqlLite.DataBase db = new DataBase(DependencyService.Get<IConfig>().StringConnection);
             db.Connection.DropTable<SqlLite.User>();
             db.Connection.CreateTable<SqlLite.User>();
             var ln = db.Connection.Insert(new SqlLite.User { ID = func.Id, Nome = func.Nome, UserJson = Newtonsoft.Json.JsonConvert.SerializeObject(func), DataCriacao = DateTime.Now.ToString("dd/MM/yyyy") });
             return ln > 0;
         }
-
+        public static void RemoveSession()
+        {
+            using (SqlLite.DataBase db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
+            {
+                db.Connection.DropTable<SqlLite.User>();
+            }
+        }
         public static bool Autenticar()
         {
             using (var db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
-            {                
+            {
                 if (db.Connection.GetTableInfo(nameof(SqlLite.User)).Count > 0)
                 {
                     return db.Connection.Table<SqlLite.User>().Any();
