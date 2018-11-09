@@ -13,6 +13,7 @@ namespace Inclock.View.BaseQr
         public Grid GrdLeitor { get; set; }
         public ZXingScannerView ZXReader { get; set; }
         public ZXingDefaultOverlay ZXOverlay { get; set; }
+        
         private void InitializeComponent()
         {
             ZXReader = new ZXingScannerView

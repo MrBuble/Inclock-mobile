@@ -5,20 +5,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <ContentPage.Content>
-        <Label Text="Deseja realmete sair?" />
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <Button
+            <Label Text="Deseja realmete sair?" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" />
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" >
+                <Button
                 x:Name="btnSim"
                 BackgroundColor="Transparent"
-                HorizontalOptions="StartAndExpand"
-                Text="Sim"
-                VerticalOptions="StartAndExpand" />
-            <Button
+                HorizontalOptions="Start"
+                Text="Sim"/>
+                <Button
                 x:Name="btnNao"
-                BackgroundColor="Transparent"
-                HorizontalOptions="StartAndExpand"
-                Text="Não"
-                VerticalOptions="StartAndExpand" />
+                BackgroundColor="Transparent"                    
+                HorizontalOptions="End"
+                Text="Não"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

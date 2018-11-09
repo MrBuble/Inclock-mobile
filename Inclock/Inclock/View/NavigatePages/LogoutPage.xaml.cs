@@ -15,23 +15,20 @@ namespace Inclock.View.NavigatePages
         public LogoutPage()
         {
             InitializeComponent();
-         btnSim.Clicked += BtnSim_Clicked;
-       btnNao.Clicked += BtnNao_Clicked;
+            btnSim.Clicked += BtnSim_Clicked;
+            btnNao.Clicked += BtnNao_Clicked;
         }
 
         private void BtnNao_Clicked(object sender, EventArgs e)
         {
-            Navigation.PopAsync();
+            Application.Current.MainPage = new Inclock.View.master.Menu();
         }
 
         private void BtnSim_Clicked(object sender, EventArgs e)
         {
             Logout();
         }
-
-        /// <summary>
-        /// Falta terminar isso, pois 
-        /// </summary>
+        
         private void Logout()
         {
             // Cria o Metodo para efetuar o logout

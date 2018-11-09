@@ -13,8 +13,7 @@ namespace Inclock.View.BaseQr
         public BaseLeituraQr()
         {   InitializeComponent();
             ZXReader.BindingContext = ViewModel;
-            ZXReader.Options.PossibleFormats.Add(ZXing.BarcodeFormat.QR_CODE);
-         
+            ZXReader.Options.PossibleFormats.Add(ZXing.BarcodeFormat.QR_CODE);         
         }
     }
 }

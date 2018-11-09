@@ -29,6 +29,7 @@
                     x:Name="txtSenha"
                     HorizontalOptions="FillAndExpand"
                     Placeholder="Senha"
+                    IsPassword="True"
                     VerticalOptions="Center" />
                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                     <Button
@@ -37,7 +38,6 @@
                         HorizontalOptions="Start"
                         Text="Logar"
                         VerticalOptions="Start" />
-
                     <Button
                         x:Name="btnEsqueciSenha"
                         BackgroundColor="Transparent"
