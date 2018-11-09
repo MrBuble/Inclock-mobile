@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Inclock.BL.SqlLite;
-using Inclock.BL.Inteface;
+using Newtonsoft.Json;
 
 namespace Inclock.BL
 {
@@ -25,7 +25,7 @@ namespace Inclock.BL
             SqlLite.DataBase db = new DataBase(DependencyService.Get<IConfig>().StringConnection);
             db.Connection.DropTable<SqlLite.User>();
             db.Connection.CreateTable<SqlLite.User>();
-            var ln = db.Connection.Insert(new SqlLite.User { ID = func.Id, Nome = func.Nome, UserJson = Newtonsoft.Json.JsonConvert.SerializeObject(func), DataCriacao = DateTime.Now.ToString("dd/MM/yyyy") });
+            var ln = db.Connection.Insert(new SqlLite.User { ID = func.Id, Nome = func.Nome, UserJson = JsonConvert.SerializeObject(func), DataCriacao = DateTime.Now.ToString("dd/MM/yyyy") });
             return ln > 0;
         }
         public static void RemoveSession()
@@ -52,6 +52,12 @@ namespace Inclock.BL
             {
                 return db.Connection.Table<SqlLite.User>().FirstOrDefault();
             }
+        }
+
+        public static Funcionario GetFuncionario()
+        {
+            SqlLite.User user = GetCurrentUser();
+            return JsonConvert.DeserializeObject<Funcionario>(user.UserJson);
         }
     }
 }

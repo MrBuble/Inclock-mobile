@@ -6,18 +6,21 @@
 
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-            <Label Text="Deseja realmete sair?" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" />
-            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" >
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="Deseja realmete sair?"
+                VerticalOptions="EndAndExpand" />
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Button
-                x:Name="btnSim"
-                BackgroundColor="Transparent"
-                HorizontalOptions="Start"
-                Text="Sim"/>
+                    x:Name="btnSim"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Start"
+                    Text="Sim" />
                 <Button
-                x:Name="btnNao"
-                BackgroundColor="Transparent"                    
-                HorizontalOptions="End"
-                Text="Não"/>
+                    x:Name="btnNao"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End"
+                    Text="Não" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

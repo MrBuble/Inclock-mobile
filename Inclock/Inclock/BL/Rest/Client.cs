@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,21 +16,34 @@ namespace Inclock.BL.Rest
     public class Client : IDisposable
     {
         public bool Disposed { get; private set; } = false;
-        private const string URI = "http://inclock.gearhostpreview.com/Service.svc/rest/";
-        private string Integracao { get; set; }
+        private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
+
         public Client()
         {
 
         }
-        public async Task<FeedBack> CheckPoint(int funcionario, char type)
+        public async Task<FeedBack> CheckPoint(Funcionario user, char type)
         {
             using (HttpClient client = new HttpClient())
             {
-                StringContent argumento = new StringContent(string.Concat("{funcionario:", 0, ",type:", type, "}"));
-                argumento.Headers.Add("integracao", Integracao);
-                HttpResponseMessage response = await client.PostAsync(URI + "CheckPoint", argumento);
-                string json = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<FeedBack>(json);
+                try
+                {
+                    FormUrlEncodedContent argumento = new FormUrlEncodedContent(new[] {
+                        new KeyValuePair<string, string>("funcionario", user.Id.ToString()),
+                        new KeyValuePair<string, string>("type", type.ToString())
+                    });
+                    argumento.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    argumento.Headers.Add("integracao", CriarIntegracao(user.Roles.ToArray()));
+                    HttpResponseMessage response = await client.PostAsync(URI + "CheckPoint", argumento);
+                    string json = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<FeedBack>(json);
+
+                }
+                catch (Exception ex)
+                {
+                    return new FeedBack() { Status = false, Mensagem ="Erro ao se conectar ao servidor" };
+                }
+              
             }
         }
 
@@ -62,9 +76,9 @@ namespace Inclock.BL.Rest
             var json = await client.GetStringAsync(URI + "getavisos/" + qtde + "/" + index);
             return JsonConvert.DeserializeObject<List<Aviso>>(json);
         }
-        public void CriarIntegracao(string dados)
+        public string CriarIntegracao(params string[]  dados)
         {
-            Integracao = Rijndael.Criptografar(dados).ToBase64();
+            return Rijndael.Criptografar(dados).ToBase64();
         }
         public void Dispose()
         {

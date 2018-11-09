@@ -31,12 +31,13 @@ namespace Inclock.View.BaseQr
                 BottomText = "Aponte para o Qr Code",
                 TopText = "Registrar ponto"
             };
-            GrdLeitor = new Grid()
+            GrdLeitor = new Grid
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Children = { ZXReader, ZXOverlay }
+                Children = { ZXReader, ZXOverlay }, IsClippedToBounds = true
             };
+            
             StlLeitor = new StackLayout()
             {
                 BackgroundColor = Color.Transparent,
