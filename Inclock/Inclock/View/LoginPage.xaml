@@ -28,8 +28,8 @@
                 <Entry
                     x:Name="txtSenha"
                     HorizontalOptions="FillAndExpand"
-                    Placeholder="Senha"
                     IsPassword="True"
+                    Placeholder="Senha"
                     VerticalOptions="Center" />
                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                     <Button

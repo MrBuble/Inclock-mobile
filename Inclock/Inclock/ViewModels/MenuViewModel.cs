@@ -16,7 +16,7 @@ namespace Inclock.ViewModels
         {
             Paginas = new ObservableCollection<VO.MasterPageItem>() {
                 new VO.MasterPageItem() { Title = "Avisos", TargetType = typeof(page.Avisos),Icon = "alerta.png" },
-                new VO.MasterPageItem() { Title = "Bater Entrada", TargetType = typeof(page.Ponto), Icon = "PontoEntrada.png" },
+                new VO.MasterPageItem() { Title = "Bater Entrada", TargetType = typeof(page.Entrada), Icon = "PontoEntrada.png" },
                 new VO.MasterPageItem() { Title = "Bater Saida", TargetType = typeof(page.Saida), Icon = "PontoSaida.png" },
                 new VO.MasterPageItem() { Title = "Logout", TargetType = typeof(page.LogoutPage), Icon = "sair.png"}
             };

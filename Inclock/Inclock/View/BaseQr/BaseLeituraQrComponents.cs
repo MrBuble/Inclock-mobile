@@ -13,7 +13,10 @@ namespace Inclock.View.BaseQr
         public Grid GrdLeitor { get; set; }
         public ZXingScannerView ZXReader { get; set; }
         public ZXingDefaultOverlay ZXOverlay { get; set; }
-        
+        public StackLayout StlLoader { get; set; }
+        public FFImageLoading.Svg.Forms.SvgCachedImage ImageLoad { get; set; }
+        public Label LblMensager { get; set; }
+        public Button BtnTentarNovamente { get; set; }
         private void InitializeComponent()
         {
             ZXReader = new ZXingScannerView
@@ -35,13 +38,48 @@ namespace Inclock.View.BaseQr
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                Children = { ZXReader, ZXOverlay }, IsClippedToBounds = true
+                Children = { ZXReader, ZXOverlay }
             };
-            
+
             StlLeitor = new StackLayout()
             {
                 BackgroundColor = Color.Transparent,
                 Children = { GrdLeitor }
+            };
+            LblMensager = new Label
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Text = ""
+            };
+            ImageLoad = new FFImageLoading.Svg.Forms.SvgCachedImage
+            {
+                Source = ImageSource.FromFile("loading.gif"),
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            StlLoader = new StackLayout
+            {
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Children =
+                {
+                    LblMensager,
+                    new AbsoluteLayout
+                    {
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        Children = { ImageLoad }
+                    }
+                }
+            };
+            BtnTentarNovamente = new Button
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Start,
+                BackgroundColor = Color.Transparent,
+                Text = "Tentar Novamente"
             };
         }
 

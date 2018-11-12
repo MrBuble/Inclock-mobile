@@ -16,8 +16,8 @@ namespace Inclock.BL.Rest
     public class Client : IDisposable
     {
         public bool Disposed { get; private set; } = false;
-        private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
-
+           private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
+       // private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
         public Client()
         {
 
@@ -27,23 +27,19 @@ namespace Inclock.BL.Rest
             using (HttpClient client = new HttpClient())
             {
                 try
-                {
-                    FormUrlEncodedContent argumento = new FormUrlEncodedContent(new[] {
-                        new KeyValuePair<string, string>("funcionario", user.Id.ToString()),
-                        new KeyValuePair<string, string>("type", type.ToString())
-                    });
-                    argumento.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                {                   
+                    string jsonData = @"{""funcionario"":" + user.Id + @",""type"":""" + type + @"""}";
+                    StringContent argumento = new StringContent(jsonData, Encoding.UTF8, "application/json");
                     argumento.Headers.Add("integracao", CriarIntegracao(user.Roles.ToArray()));
-                    HttpResponseMessage response = await client.PostAsync(URI + "CheckPoint", argumento);
+                    HttpResponseMessage response = await client.PostAsync(URI + "/CheckPoint", argumento);
                     string json = await response.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<FeedBack>(json);
-
                 }
                 catch (Exception ex)
                 {
-                    return new FeedBack() { Status = false, Mensagem ="Erro ao se conectar ao servidor" };
+                    return new FeedBack() { Status = false, Mensagem = "Erro ao se conectar ao servidor" };
                 }
-              
+
             }
         }
 
@@ -76,7 +72,7 @@ namespace Inclock.BL.Rest
             var json = await client.GetStringAsync(URI + "getavisos/" + qtde + "/" + index);
             return JsonConvert.DeserializeObject<List<Aviso>>(json);
         }
-        public string CriarIntegracao(params string[]  dados)
+        public string CriarIntegracao(params string[] dados)
         {
             return Rijndael.Criptografar(dados).ToBase64();
         }

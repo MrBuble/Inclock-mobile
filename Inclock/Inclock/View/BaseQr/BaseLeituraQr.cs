@@ -6,14 +6,49 @@ using Xamarin.Forms.Xaml;
 
 namespace Inclock.View.BaseQr
 {
-    
-    public partial class BaseLeituraQr 
+
+    public partial class BaseLeituraQr
     {
         public ViewModels.GetQrViewModel ViewModel = new Inclock.ViewModels.GetQrViewModel();
         public BaseLeituraQr()
-        {   InitializeComponent();
+        {
+            InitializeComponent();
             ZXReader.BindingContext = ViewModel;
-            ZXReader.Options.PossibleFormats.Add(ZXing.BarcodeFormat.QR_CODE);         
+            ZXReader.Options.PossibleFormats.Add(ZXing.BarcodeFormat.QR_CODE);
+        }
+        public void DesactiveReader()
+        {
+            ViewModel.IsScanning = false;
+            GrdLeitor.IsVisible = false;
+
+        }
+        public void ReactiveReader()
+        {
+            InitializeComponent();
+            //      ViewModel.IsScanning = true;
+            //     GrdLeitor.IsVisible = true;
+            //    StlLeitor.Children.Remove(StlLoader);
+        }
+
+        public void CreateLoading(string mensager)
+        {
+            Plugin.Vibrate.CrossVibrate.Current.Vibration();
+            DesactiveReader();            
+            LblMensager.Text = mensager;
+            StlLeitor.Children.Add(StlLoader);
+        }
+        public void FinishLoad(string mensager)
+        {
+            Plugin.Vibrate.CrossVibrate.Current.Vibration();
+            ImageLoad.IsVisible = false;
+            DesactiveReader();
+        }
+        public void FailLoading(string mensager)
+        {
+            LblMensager.Text = mensager;
+            ImageLoad.IsVisible = false;
+            BtnTentarNovamente.Clicked += (obj, ev) => { ReactiveReader(); };
+            StlLoader.Children.Add(BtnTentarNovamente);
         }
     }
 }
