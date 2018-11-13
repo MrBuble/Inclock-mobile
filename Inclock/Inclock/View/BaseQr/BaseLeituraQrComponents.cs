@@ -55,14 +55,14 @@ namespace Inclock.View.BaseQr
             ImageLoad = new FFImageLoading.Svg.Forms.SvgCachedImage
             {
                 Source = ImageSource.FromFile("loading.gif"),
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.Center,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
             StlLoader = new StackLayout
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.Start,
                 Children =
                 {
                     LblMensager,
@@ -70,7 +70,7 @@ namespace Inclock.View.BaseQr
                     {
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        Children = { ImageLoad }
+                        Children = {ImageLoad }
                     }
                 }
             };

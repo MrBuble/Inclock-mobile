@@ -18,8 +18,10 @@ namespace Inclock.View.BaseQr
         }
         public void DesactiveReader()
         {
-            ViewModel.IsScanning = false;
-            GrdLeitor.IsVisible = false;
+            ZXReader.IsScanning = false;
+            GrdLeitor.IsEnabled = false;
+            
+            GrdLeitor.Opacity = 0;
 
         }
         public void ReactiveReader()
@@ -32,10 +34,14 @@ namespace Inclock.View.BaseQr
 
         public void CreateLoading(string mensager)
         {
-            Plugin.Vibrate.CrossVibrate.Current.Vibration();
-            DesactiveReader();            
-            LblMensager.Text = mensager;
-            StlLeitor.Children.Add(StlLoader);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Plugin.Vibrate.CrossVibrate.Current.Vibration();
+                DesactiveReader();            
+                LblMensager.Text = mensager;
+                StlLeitor.Children.Add(StlLoader);
+            });
+            
         }
         public void FinishLoad(string mensager)
         {

@@ -23,9 +23,10 @@ namespace Inclock.View.NavigatePages
             Content = BaseQr.StlLeitor;
             BaseQr.ZXReader.OnScanResult += ZXReader_OnScanResult;            
         }
-
+        
         private async void ZXReader_OnScanResult(ZXing.Result result)
         {
+            
             BaseQr.CreateLoading("Aguarde...");           
             using (var client = new Client())
             {
