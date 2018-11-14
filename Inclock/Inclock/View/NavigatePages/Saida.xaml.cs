@@ -37,11 +37,11 @@ namespace Inclock.View.NavigatePages
                 {
                     Plugin.Vibrate.CrossVibrate.Current.Vibration();
                     BaseQr.LblMensager.Text = retorno.Mensagem;
-                    Thread.Sleep(5000);
                     App.Current.MainPage = new master.Menu();
                 }
                 else
-                {   BaseQr.ReactiveReader();
+                {
+                    BaseQr.FinishLoad();
                     Plugin.Vibrate.CrossVibrate.Current.Vibration();
                     BaseQr.ZXOverlay.BottomText = retorno.Mensagem;
                 }

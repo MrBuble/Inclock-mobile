@@ -20,7 +20,7 @@ namespace Inclock.View.BaseQr
         {
             ZXReader.IsScanning = false;
             GrdLeitor.IsEnabled = false;
-            
+
             GrdLeitor.Opacity = 0;
 
         }
@@ -37,24 +37,30 @@ namespace Inclock.View.BaseQr
             Device.BeginInvokeOnMainThread(() =>
             {
                 Plugin.Vibrate.CrossVibrate.Current.Vibration();
-                DesactiveReader();            
+                DesactiveReader();
                 LblMensager.Text = mensager;
                 StlLeitor.Children.Add(StlLoader);
             });
-            
+
         }
-        public void FinishLoad(string mensager)
+        public void FinishLoad(string mensager,bool status)
         {
-            Plugin.Vibrate.CrossVibrate.Current.Vibration();
-            ImageLoad.IsVisible = false;
-            DesactiveReader();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Plugin.Vibrate.CrossVibrate.Current.Vibration();
+                ReactiveReader();
+                
+            });
         }
         public void FailLoading(string mensager)
         {
-            LblMensager.Text = mensager;
-            ImageLoad.IsVisible = false;
-            BtnTentarNovamente.Clicked += (obj, ev) => { ReactiveReader(); };
-            StlLoader.Children.Add(BtnTentarNovamente);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                LblMensager.Text = mensager;
+                ImageLoad.IsVisible = false;
+                BtnTentarNovamente.Clicked += (obj, ev) => { ReactiveReader(); };
+                StlLoader.Children.Add(BtnTentarNovamente);
+            });
         }
     }
 }
