@@ -41,7 +41,7 @@ namespace Inclock.View.NavigatePages
                 }
                 else
                 {
-                    BaseQr.FinishLoad();
+                  
                     Plugin.Vibrate.CrossVibrate.Current.Vibration();
                     BaseQr.ZXOverlay.BottomText = retorno.Mensagem;
                 }

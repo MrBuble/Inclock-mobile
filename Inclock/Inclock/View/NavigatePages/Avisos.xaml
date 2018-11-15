@@ -4,17 +4,23 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Avisos">
-    <ContentPage>
-        <StackLayout>
-            <Image
-                HorizontalOptions="FillAndExpand"
-                Source="{Binding Imagem}"
-                VerticalOptions="FillAndExpand" />
-            <Label
-                x:Name="txtConteudo"
-                HorizontalOptions="Center"
-                Text="{Binding Conteudo}" />
-            <Label Text="Avisos"></Label>
-        </StackLayout>
-    </ContentPage>
+    <CarouselPage.ItemTemplate>
+        <DataTemplate>
+            <ContentPage>
+                <StackLayout VerticalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image
+                        HorizontalOptions="CenterAndExpand"
+                        Source="{Binding Imagem}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        x:Name="txtConteudo"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Text="{Binding Titulo}" />
+                    <Label Text="Avisos" />
+                </StackLayout>
+            </ContentPage>
+        </DataTemplate>
+    </CarouselPage.ItemTemplate>
+
 </CarouselPage>
