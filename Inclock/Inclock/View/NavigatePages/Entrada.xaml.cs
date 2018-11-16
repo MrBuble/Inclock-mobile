@@ -18,33 +18,18 @@ namespace Inclock.View.NavigatePages
         public BaseLeituraQr BaseQr = new BaseLeituraQr();
 		public Entrada ()
 		{
-			InitializeComponent ();
+            InitializeComponent();
             Content = BaseQr.StlLeitor;
             BaseQr.ZXReader.OnScanResult +=  ZXReader_OnScanResultAsync;
 		}
 
         private async void ZXReader_OnScanResultAsync(ZXing.Result result)
         {
-            BaseQr.DesactiveReader();
-            Plugin.Vibrate.CrossVibrate.Current.Vibration();
-            BaseQr.ZXOverlay.BottomText = "Aguarde...";
+            BaseQr.CreateLoading("Aguarde...");
             using (var client = new Client())
             {
-                BL.Login.GetCurrentUser();
                 var retorno = await client.CheckPoint(BL.Login.GetFuncionario(), 'E');
-                if (retorno.Status)
-                {
-                    Plugin.Vibrate.CrossVibrate.Current.Vibration();
-                    BaseQr.ZXOverlay.BottomText = retorno.Mensagem;
-                    Thread.Sleep(5000);
-                    App.Current.MainPage = new master.Menu();
-                }
-                else
-                {
-                    BaseQr.ReactiveReader();
-                    Plugin.Vibrate.CrossVibrate.Current.Vibration();
-                    BaseQr.ZXOverlay.BottomText = retorno.Mensagem;
-                }
+                BaseQr.FinishLoad(retorno.Mensagem, false);
             }
         }
     }

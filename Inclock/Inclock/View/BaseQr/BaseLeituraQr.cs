@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,41 +28,41 @@ namespace Inclock.View.BaseQr
         }
         public void ReactiveReader()
         {
-            InitializeComponent();
-            //      ViewModel.IsScanning = true;
-            //     GrdLeitor.IsVisible = true;
-            //    StlLeitor.Children.Remove(StlLoader);
+            StlLoader.Opacity = 0;
+            GrdLeitor.IsEnabled = true;
+            ZXReader.IsScanning = true;
+            GrdLeitor.Opacity = 1;
+
         }
 
         public void CreateLoading(string mensager)
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                Plugin.Vibrate.CrossVibrate.Current.Vibration();
-                DesactiveReader();
-                LblMensager.Text = mensager;
-                StlLeitor.Children.Add(StlLoader);
-            });
+
+            Plugin.Vibrate.CrossVibrate.Current.Vibration();
+            DesactiveReader();
+            LblMensager.Text = mensager;
+            StlLoader.Opacity = 1;
 
         }
-        public void FinishLoad(string mensager,bool status)
+        public void FinishLoad(string msg, bool status)
         {
-            Device.BeginInvokeOnMainThread(() =>
+
+            Plugin.Vibrate.CrossVibrate.Current.Vibration();
+            if (status)
             {
-                Plugin.Vibrate.CrossVibrate.Current.Vibration();
-                ReactiveReader();
-                
-            });
+                LblMensager.Text = msg;
+                Thread.Sleep(5000);
+                App.Current.MainPage = new master.Menu();
+            }
+            else
+                FailLoading(msg);
         }
-        public void FailLoading(string mensager)
+        public void FailLoading(string msg)
         {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                LblMensager.Text = mensager;
-                ImageLoad.IsVisible = false;
-                BtnTentarNovamente.Clicked += (obj, ev) => { ReactiveReader(); };
-                StlLoader.Children.Add(BtnTentarNovamente);
-            });
+            BtnTentarNovamente.Opacity = StlLoader.Opacity = 1;
+            LblMensager.Text = msg;
+            ImageLoad.IsVisible = false;
+            BtnTentarNovamente.Clicked += (obj, ev) => { ReactiveReader(); };
         }
     }
 }

@@ -40,29 +40,33 @@ namespace Inclock.View.BaseQr
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 Children = { ZXReader, ZXOverlay }
             };
-
-            StlLeitor = new StackLayout()
-            {
-                BackgroundColor = Color.Transparent,
-                Children = { GrdLeitor }
-            };
+            
             LblMensager = new Label
             {
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                Text = ""
+                VerticalOptions = LayoutOptions.Start,
+                Text = "kiko"
             };
             ImageLoad = new FFImageLoading.Svg.Forms.SvgCachedImage
             {
-                Source = ImageSource.FromFile("loading.gif"),
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
+                Source = "loading.gif",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Start,
+                Scale = 3
             };
-
+            BtnTentarNovamente = new Button
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.Start,
+                BackgroundColor = Color.Transparent,
+                IsVisible = false,
+                Text = "Tentar Novamente"
+            };
             StlLoader = new StackLayout
             {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.Start,
+                Opacity = 0,
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Children =
                 {
                     LblMensager,
@@ -70,16 +74,16 @@ namespace Inclock.View.BaseQr
                     {
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        Children = {ImageLoad }
-                    }
+                        Children = { ImageLoad }
+                    },
+                    BtnTentarNovamente
                 }
             };
-            BtnTentarNovamente = new Button
+
+            StlLeitor = new StackLayout()
             {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Start,
                 BackgroundColor = Color.Transparent,
-                Text = "Tentar Novamente"
+                Children = { GrdLeitor,StlLoader }
             };
         }
 
