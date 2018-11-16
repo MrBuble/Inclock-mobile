@@ -21,33 +21,21 @@ namespace Inclock.View.NavigatePages
         {
             InitializeComponent();
             Content = BaseQr.StlLeitor;
-            BaseQr.ZXReader.OnScanResult += ZXReader_OnScanResult;            
+            BaseQr.ZXReader.OnScanResult += ZXReader_OnScanResult;
         }
-        
-        private async void ZXReader_OnScanResult(ZXing.Result result)
+
+        private void ZXReader_OnScanResult(ZXing.Result result)
         {
-            
-            BaseQr.CreateLoading("Aguarde...");           
+
             using (var client = new Client())
             {
-                BL.Login.GetCurrentUser();
-               
-                var retorno = await client.CheckPoint(BL.Login.GetFuncionario(), 'S');
-                if (retorno.Status)
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    Plugin.Vibrate.CrossVibrate.Current.Vibration();
-                    BaseQr.LblMensager.Text = retorno.Mensagem;
-                    App.Current.MainPage = new master.Menu();
-                }
-                else
-                {
-                  
-                    Plugin.Vibrate.CrossVibrate.Current.Vibration();
-                    BaseQr.ZXOverlay.BottomText = retorno.Mensagem;
-                }
-               
+                    BaseQr.CreateLoading("Aguarde...");
+                    var retorno = await client.CheckPoint(BL.Login.GetFuncionario(), 'S');
+                    BaseQr.FinishLoad(retorno.Mensagem, false);
+                });
             }
-
         }
     }
 }
