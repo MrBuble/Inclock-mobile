@@ -64,7 +64,7 @@ namespace Inclock.View.BaseQr
             };
             StlLoader = new StackLayout
             {
-                Opacity = 0,
+                IsVisible = false,
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 Children =

@@ -33,7 +33,8 @@ namespace Inclock.BL.Rest
                     argumento.Headers.Add("integracao", CriarIntegracao(user.Roles.ToArray()));
                     HttpResponseMessage response = await client.PostAsync(URI + "/CheckPoint", argumento);
                     string json = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<FeedBack>(json);
+                    var bt = JsonConvert.DeserializeObject<MapedFeedBack>(json);
+                    return bt.CheckPointResult;
                 }
                 catch (Exception ex)
                 {

@@ -20,49 +20,55 @@ namespace Inclock.View.BaseQr
         }
         public void DesactiveReader()
         {
-            ZXReader.IsScanning = false;
-            GrdLeitor.IsEnabled = false;
-
-            GrdLeitor.Opacity = 0;
-
+            ZXReader.IsAnalyzing =
+            ZXReader.IsScanning =
+            GrdLeitor.IsVisible = false;
         }
         public void ReactiveReader()
         {
-            StlLoader.Opacity = 0;
-            GrdLeitor.IsEnabled = true;
-            ZXReader.IsScanning = true;
-            GrdLeitor.Opacity = 1;
-
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                GrdLeitor.IsVisible = true;
+                ZXReader.IsAnalyzing = true;
+                ZXReader.IsScanning = true;
+                StlLoader.IsVisible = false;
+            });
         }
 
         public void CreateLoading(string mensager)
         {
-
-            Plugin.Vibrate.CrossVibrate.Current.Vibration();
-            DesactiveReader();
-            LblMensager.Text = mensager;
-            StlLoader.Opacity = 1;
-
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Plugin.Vibrate.CrossVibrate.Current.Vibration();
+                DesactiveReader();
+                LblMensager.Text = mensager;
+                StlLoader.IsVisible = true;
+            });
         }
         public void FinishLoad(string msg, bool status)
         {
-
             Plugin.Vibrate.CrossVibrate.Current.Vibration();
             if (status)
             {
-                LblMensager.Text = msg;
-                Thread.Sleep(5000);
-                App.Current.MainPage = new master.Menu();
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    LblMensager.Text = msg;
+                    Thread.Sleep(5000);
+                    App.Current.MainPage = new master.Menu();
+                });
             }
             else
                 FailLoading(msg);
         }
         public void FailLoading(string msg)
         {
-            BtnTentarNovamente.Opacity = StlLoader.Opacity = 1;
-            LblMensager.Text = msg;
-            ImageLoad.IsVisible = false;
             BtnTentarNovamente.Clicked += (obj, ev) => { ReactiveReader(); };
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                LblMensager.Text = msg;
+                ImageLoad.IsVisible = false;
+                BtnTentarNovamente.IsVisible = true;
+            });
         }
     }
 }

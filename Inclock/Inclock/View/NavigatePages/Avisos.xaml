@@ -7,7 +7,7 @@
     <CarouselPage.ItemTemplate>
         <DataTemplate>
             <ContentPage>
-                <StackLayout VerticalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="CenterAndExpand">
                     <Image
                         HorizontalOptions="CenterAndExpand"
                         Source="{Binding Imagem}"
@@ -15,8 +15,8 @@
                     <Label
                         x:Name="txtConteudo"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="{Binding Titulo}" />
+                        Text="{Binding Titulo}"
+                        VerticalOptions="Center" />
                     <Label Text="Avisos" />
                 </StackLayout>
             </ContentPage>

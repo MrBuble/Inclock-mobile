@@ -24,17 +24,14 @@ namespace Inclock.View.NavigatePages
             BaseQr.ZXReader.OnScanResult += ZXReader_OnScanResult;
         }
 
-        private void ZXReader_OnScanResult(ZXing.Result result)
+        private async void ZXReader_OnScanResult(ZXing.Result result)
         {
-
             using (var client = new Client())
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    BaseQr.CreateLoading("Aguarde...");
-                    var retorno = await client.CheckPoint(BL.Login.GetFuncionario(), 'S');
-                    BaseQr.FinishLoad(retorno.Mensagem, false);
-                });
+                BaseQr.CreateLoading("Aguarde...");
+                var retorno = await client.CheckPoint(BL.Login.GetFuncionario(), 'S');
+                BaseQr.FinishLoad(retorno.Mensagem, false);
+
             }
         }
     }
