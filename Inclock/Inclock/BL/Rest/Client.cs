@@ -16,8 +16,9 @@ namespace Inclock.BL.Rest
     public class Client : IDisposable
     {
         public bool Disposed { get; private set; } = false;
-           private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
-       // private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
+        private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
+        public static string UrlImagens { get { return "http://inclock-web.gearhostpreview.com/upload/Avisos/"; } }
+        // private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
         public Client()
         {
 
@@ -27,7 +28,7 @@ namespace Inclock.BL.Rest
             using (HttpClient client = new HttpClient())
             {
                 try
-                {                   
+                {
                     string jsonData = @"{""funcionario"":" + user.Id + @",""type"":""" + type + @"""}";
                     StringContent argumento = new StringContent(jsonData, Encoding.UTF8, "application/json");
                     argumento.Headers.Add("integracao", CriarIntegracao(user.Roles.ToArray()));
@@ -64,14 +65,14 @@ namespace Inclock.BL.Rest
         public async Task<Funcionario> LogarAsync(string login, string senha)
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(URI + "logar/" + senha + "/" + senha);
+            var json = await client.GetStringAsync(URI + "logar/" + senha + "/" + login + "/mobile");
             return JsonConvert.DeserializeObject<Funcionario>(json);
         }
-        public async Task<List<Aviso>> GetAvisos(int qtde, int index)
+        public async Task<List<VO.Aviso>> GetAvisos(int qtde, int index)
         {
             HttpClient client = new HttpClient();
             var json = await client.GetStringAsync(URI + "getavisos/" + qtde + "/" + index);
-            return JsonConvert.DeserializeObject<List<Aviso>>(json);
+            return JsonConvert.DeserializeObject<VO.Aviso.BindingAvisos>(json).GetAvisosResult;
         }
         public string CriarIntegracao(params string[] dados)
         {

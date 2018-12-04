@@ -4,21 +4,34 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Avisos">
+
+    <CarouselPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding RefreshItemsCommand}"
+            Icon="PontoSaida.png"
+            Order="Primary" />
+    </CarouselPage.ToolbarItems>
     <CarouselPage.ItemTemplate>
         <DataTemplate>
             <ContentPage>
                 <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label
+                        x:Name="txtTitulo"
+                        HorizontalOptions="Center"
+                        Text="{Binding Titulo}"
+                        VerticalOptions="StartAndExpand" />
                     <Image
                         HorizontalOptions="CenterAndExpand"
                         Source="{Binding Imagem}"
                         VerticalOptions="CenterAndExpand" />
+
                     <Label
                         x:Name="txtConteudo"
                         HorizontalOptions="Center"
-                        Text="{Binding Titulo}"
-                        VerticalOptions="Center" />
-                    <Label Text="Avisos" />
+                        Text="{Binding Conteudo}"
+                        VerticalOptions="EndAndExpand" />
                 </StackLayout>
+
             </ContentPage>
         </DataTemplate>
     </CarouselPage.ItemTemplate>

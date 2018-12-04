@@ -1,49 +1,53 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Inclock.View.master.MenuMaster"
-             Title="MasterPage">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Inclock.View.master.MenuMaster"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="MasterPage">
 
     <StackLayout>
-        <ListView x:Name="MenuItemsListView"
-              SeparatorVisibility="None"                     
-              HasUnevenRows="true">
+        <ListView
+            x:Name="MenuItemsListView"
+            HasUnevenRows="true"
+            SeparatorVisibility="None">
             <ListView.Header>
-                <Grid  BackgroundColor="#1F96FB">
+                <Grid BackgroundColor="#1F96FB">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="80"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
-                    <Label                
-                          x:Name="lblUsuario"
-                          Grid.Column="1"
-                          Grid.Row="2"
-                          Text="Usuario"
-                        TextColor="White"
-                          Style="{DynamicResource SubtitleStyle}"/>
+                    <Label
+                        x:Name="lblUsuario"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{DynamicResource SubtitleStyle}"
+                        Text="Usuario"
+                        TextColor="White" />
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="5,10" >
+                        <Grid Padding="5,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding Icon}"  />
-                            <Label VerticalOptions="FillAndExpand" Margin="2"
-                                VerticalTextAlignment="Center" 
-                                Text="{Binding Title}" 
+                            <Image Source="{Binding Icon}" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="2"
                                 FontSize="Default"
-                                Grid.Column="1"/>       
+                                Text="{Binding Title}"
+                                VerticalOptions="FillAndExpand"
+                                VerticalTextAlignment="Center" />
                         </Grid>
 
                     </ViewCell>

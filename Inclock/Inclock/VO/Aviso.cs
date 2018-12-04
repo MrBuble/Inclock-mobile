@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Inclock.BL.Rest;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -22,7 +24,7 @@ namespace Inclock.VO
             get { return _imagem; }
             set
             {
-                _imagem = value;
+                _imagem = Client.UrlImagens + value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Imagem)));
             }
         }
@@ -50,5 +52,11 @@ namespace Inclock.VO
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public class BindingAvisos
+        {
+            [JsonProperty("GetAvisosResult")]
+            public List<Aviso> GetAvisosResult { get; set; }
+        }
     }
+
 }
