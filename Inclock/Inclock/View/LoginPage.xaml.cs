@@ -31,7 +31,9 @@ namespace Inclock.View
                     DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Informe seu Email");
                 }
                 else
+                {
                     DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Sua senha foi enviada no seu email");
+                }
             }
         }
         private async void BtnLogar_Clicked(object sender, EventArgs e)

@@ -15,8 +15,7 @@ namespace Inclock.BL
     public class Login
     {
         public static async Task<Funcionario> Logar(string login, string senha)
-        {
-            FeedBack feed;
+        {            
             Client cliente = new Client();
             return await cliente.LogarAsync(login, senha);
         }

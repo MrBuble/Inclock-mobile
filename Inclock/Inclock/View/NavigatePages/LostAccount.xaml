@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Inclock.View.NavigatePages.LostAccount"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Label Text="Informe o email cadastrado na conta" />
+            <Entry
+                x:Name="txtEmail"
+                HorizontalOptions="CenterAndExpand"
+                Placeholder="Email"
+                VerticalOptions="Center" />
+            <StackLayout Orientation="Horizontal">
+                <Button
+                    x:Name="btnEnviar"
+                    Margin="10"
+                    HorizontalOptions="Start"
+                    Text="Enviar"
+                    VerticalOptions="Start" />
+                <Button
+                    x:Name="btnVoltar"
+                    Margin="10"
+                    HorizontalOptions="End"
+                    Text="Voltar"
+                    VerticalOptions="End" />
+            </StackLayout>
+            <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+                <ff:SvgCachedImage
+                    x:Name="imgLogin"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="False"
+                    Source="loading.gif"
+                    VerticalOptions="CenterAndExpand" />
+            </AbsoluteLayout>
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentView>

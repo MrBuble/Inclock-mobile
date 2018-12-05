@@ -16,9 +16,9 @@ namespace Inclock.BL.Rest
     public class Client : IDisposable
     {
         public bool Disposed { get; private set; } = false;
-        private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
         public static string UrlImagens { get { return "http://inclock-web.gearhostpreview.com/upload/Avisos/"; } }
-        // private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
+        // private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");      
+        private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
         public Client()
         {
 
@@ -51,9 +51,9 @@ namespace Inclock.BL.Rest
             throw new NotImplementedException();
         }
 
-        public string GetLogin(string Email)
+        public Task<FeedBack> EnviarSenhaEmail(string Email)
         {
-            throw new NotImplementedException();
+         
         }
 
         public string GetPassword(string Login)

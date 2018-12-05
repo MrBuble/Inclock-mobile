@@ -45,7 +45,7 @@
                         Text="Esqueci a Senha"
                         VerticalOptions="Start" />
                 </StackLayout>
-                <AbsoluteLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <AbsoluteLayout HorizontalOptions="CenterAndExpand">
                     <ff:SvgCachedImage
                         x:Name="imgLogin"
                         HorizontalOptions="CenterAndExpand"
