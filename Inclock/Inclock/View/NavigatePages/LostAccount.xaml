@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView
+<ContentPage
     x:Class="Inclock.View.NavigatePages.LostAccount"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
-    <ContentView.Content>
+    <ContentPage.Content>
         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <Label Text="Informe o email cadastrado na conta" />
             <Entry
@@ -36,5 +36,5 @@
             </AbsoluteLayout>
         </StackLayout>
 
-    </ContentView.Content>
-</ContentView>
+    </ContentPage.Content>
+</ContentPage>

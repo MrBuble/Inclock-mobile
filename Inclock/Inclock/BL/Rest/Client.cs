@@ -51,16 +51,14 @@ namespace Inclock.BL.Rest
             throw new NotImplementedException();
         }
 
-        public Task<FeedBack> EnviarSenhaEmail(string Email)
+        public async Task<FeedBack> EnviarSenhaEmail(string Email)
         {
-         
+            using (HttpClient client = new HttpClient())
+            {
+                var json = await client.GetStringAsync(URI + "sendaccount/" + Email);
+                return JsonConvert.DeserializeObject<FeedBack>(json);
+            }
         }
-
-        public string GetPassword(string Login)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public async Task<Funcionario> LogarAsync(string login, string senha)
         {

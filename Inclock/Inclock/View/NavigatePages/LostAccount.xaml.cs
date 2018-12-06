@@ -13,12 +13,18 @@ using Xamarin.Forms.Xaml;
 namespace Inclock.View.NavigatePages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LostAccount : ContentView
+    public partial class LostAccount : ContentPage
     {
         public LostAccount()
         {
             InitializeComponent();
             btnEnviar.Clicked += BtnEnviar_Clicked;
+            btnVoltar.Clicked += BtnVoltar_Clicked;
+        }
+
+        private void BtnVoltar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync(true);
         }
 
         private void BtnEnviar_Clicked(object sender, EventArgs e)

@@ -15,26 +15,15 @@ namespace Inclock.View
     public partial class LoginPage : ContentPage
     {
         public LoginPage()
-        {  
-            InitializeComponent();          
+        {
+            InitializeComponent();
             btnLogar.Clicked += BtnLogar_Clicked;
             btnEsqueciSenha.Clicked += BtnEsqueciSenha_Clicked;
         }
-      
+
         private async void BtnEsqueciSenha_Clicked(object sender, EventArgs e)
         {
-            bool dialog = await DisplayAlert("Esqueci a senha", "Deseja Envia sua senha por email", "Sim", "Não");
-            if (dialog)
-            {
-                if (string.IsNullOrEmpty(txtlogin.Text))
-                {
-                    DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Informe seu Email");
-                }
-                else
-                {
-                    DependencyService.Get<BL.Inteface.IToast>().ShortAlert("Sua senha foi enviada no seu email");
-                }
-            }
+            await Navigation.PushAsync(new NavigatePages.LostAccount());
         }
         private async void BtnLogar_Clicked(object sender, EventArgs e)
         {
@@ -45,7 +34,8 @@ namespace Inclock.View
                 var user = await BL.Login.Logar(txtlogin.Text, txtSenha.Text);
                 if (user.Id == 0)
                     await DisplayAlert("Erro", "Login ou senha estão incorretos", "OK");
-
+                else if (user.Id == -1)
+                    await DisplayAlert("Aviso", "Desculpe mas o usuario ja esta logado em outro dispositivo", "OK");
                 else
                 {
                     BL.Login.CreateSession(user);
