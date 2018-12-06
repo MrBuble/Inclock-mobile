@@ -27,13 +27,13 @@ namespace Inclock.View.NavigatePages
             Navigation.PopAsync(true);
         }
 
-        private void BtnEnviar_Clicked(object sender, EventArgs e)
+        private async void BtnEnviar_Clicked(object sender, EventArgs e)
         {
             if (ValidarEmail())
             {
                 using (var client = new Client())
                 {
-                    client.EnviarSenhaEmail(txtEmail.Text);
+                   await client.EnviarSenhaEmail(txtEmail.Text);
                 }
             }
             else
@@ -44,7 +44,7 @@ namespace Inclock.View.NavigatePages
 
         private bool ValidarEmail()
         {
-            string expressao = @"/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i";
+            string expressao = @"/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/";
             Regex reg = new Regex(expressao);
             return reg.IsMatch(txtEmail.Text);
         }

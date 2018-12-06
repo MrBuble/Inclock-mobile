@@ -31,8 +31,12 @@ namespace Inclock.BL
         {
             using (SqlLite.DataBase db = new DataBase(DependencyService.Get<IConfig>().StringConnection))
             {
-                db.Connection.DropTable<SqlLite.User>();
-              
+                using (var ctx = new  Client())
+                {
+                    var user = GetCurrentUser();
+                    ctx.EncerrarSessao(user.ID);              
+                    db.Connection.DropTable<SqlLite.User>();
+                };               
             }
         }
         public static bool Autenticar()

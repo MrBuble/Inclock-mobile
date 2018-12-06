@@ -17,19 +17,22 @@ namespace Inclock.BL.Rest
     {
         public bool Disposed { get; private set; } = false;
         public static string UrlImagens { get { return "http://inclock-web.gearhostpreview.com/upload/Avisos/"; } }
-        // private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");      
-        private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
+        private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
+        //   private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
         public Client()
         {
 
         }
-        public async Task<FeedBack> CheckPoint(Funcionario user, char type)
+        public async Task<FeedBack> CheckPoint(Funcionario user, char type, string code)
         {
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    string jsonData = @"{""funcionario"":" + user.Id + @",""type"":""" + type + @"""}";
+                    string fun = "\"funcionario\": " + user.Id;
+                    string tp = "\" type\" :\"" + type + "\"";
+                    string qr = "\",\"code\":\" " + code + " \"";
+                    string jsonData = string.Concat("{",fun, ",", tp, "," + qr,"}");
                     StringContent argumento = new StringContent(jsonData, Encoding.UTF8, "application/json");
                     argumento.Headers.Add("integracao", CriarIntegracao(user.Roles.ToArray()));
                     HttpResponseMessage response = await client.PostAsync(URI + "/CheckPoint", argumento);
@@ -59,11 +62,17 @@ namespace Inclock.BL.Rest
                 return JsonConvert.DeserializeObject<FeedBack>(json);
             }
         }
-
+        public async void EncerrarSessao(int func)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                var json = await client.DeleteAsync(URI + "sendaccount/" + func + "/mob");
+            }
+        }
         public async Task<Funcionario> LogarAsync(string login, string senha)
         {
             HttpClient client = new HttpClient();
-            var json = await client.GetStringAsync(URI + "logar/" + senha + "/" + login + "/mobile");
+            var json = await client.GetStringAsync(URI + "logar/" + senha + "/" + login + "/mob");
             return JsonConvert.DeserializeObject<Funcionario>(json);
         }
         public async Task<List<VO.Aviso>> GetAvisos(int qtde, int index)

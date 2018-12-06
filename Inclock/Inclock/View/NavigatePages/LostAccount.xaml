@@ -3,15 +3,16 @@
     x:Class="Inclock.View.NavigatePages.LostAccount"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+    xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    Title="Esqueci a Senha">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             <Label Text="Informe o email cadastrado na conta" />
             <Entry
                 x:Name="txtEmail"
-                HorizontalOptions="CenterAndExpand"
+                HorizontalOptions="FillAndExpand"
                 Placeholder="Email"
-                VerticalOptions="Center" />
+                VerticalOptions="CenterAndExpand" />
             <StackLayout Orientation="Horizontal">
                 <Button
                     x:Name="btnEnviar"

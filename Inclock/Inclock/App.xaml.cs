@@ -15,7 +15,7 @@ namespace Inclock
             if (BL.Login.Autenticar())
                 MainPage = new View.master.Menu();
             else
-                MainPage = new View.LoginPage();
+                MainPage =new NavigationPage( new View.LoginPage());
             //    MainPage = new View.master.Menu();
 
         }

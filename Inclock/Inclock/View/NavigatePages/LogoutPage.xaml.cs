@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,12 +29,12 @@ namespace Inclock.View.NavigatePages
         {
             Logout();
         }
-        
+
         private void Logout()
         {
             // Cria o Metodo para efetuar o logout
             BL.Login.RemoveSession();
-            Application.Current.MainPage = new Inclock.View.LoginPage();
+            Application.Current.MainPage = new NavigationPage(new Inclock.View.LoginPage());
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Inclock.View.NavigatePages
             using (var client = new Client())
             {
                 BaseQr.CreateLoading("Aguarde...");
-                var retorno = await client.CheckPoint(BL.Login.GetFuncionario(), 'S');
+                var retorno = await client.CheckPoint(BL.Login.GetFuncionario(), 'S',result.Text);
                 BaseQr.FinishLoad(retorno.Mensagem, false);
 
             }
