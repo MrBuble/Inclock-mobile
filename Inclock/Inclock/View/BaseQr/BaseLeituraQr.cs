@@ -21,7 +21,7 @@ namespace Inclock.View.BaseQr
         public void DesactiveReader()
         {
             ZXReader.IsAnalyzing =
-            ZXReader.IsScanning =
+           // ZXReader.IsScanning =
             GrdLeitor.IsVisible = false;
         }
         public void ReactiveReader()

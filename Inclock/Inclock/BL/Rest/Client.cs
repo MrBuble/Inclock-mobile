@@ -17,8 +17,8 @@ namespace Inclock.BL.Rest
     {
         public bool Disposed { get; private set; } = false;
         public static string UrlImagens { get { return "http://inclock-web.gearhostpreview.com/upload/Avisos/"; } }
-        private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
-        //   private readonly Uri URI = new Uri("https://69fad570.ngrok.io/Service.svc/rest/");
+       private readonly Uri URI = new Uri("http://inclock.gearhostpreview.com/Service.svc/rest/");
+      // private readonly Uri URI = new Uri(" https://a30551da.ngrok.io/Service.svc/rest/");
         public Client()
         {
 
@@ -30,8 +30,8 @@ namespace Inclock.BL.Rest
                 try
                 {
                     string fun = "\"funcionario\": " + user.Id;
-                    string tp = "\" type\" :\"" + type + "\"";
-                    string qr = "\",\"code\":\" " + code + " \"";
+                    string tp = "\"type\" :\"" + type + "\"";
+                    string qr = "\"code\":\" " + code + " \"";
                     string jsonData = string.Concat("{",fun, ",", tp, "," + qr,"}");
                     StringContent argumento = new StringContent(jsonData, Encoding.UTF8, "application/json");
                     argumento.Headers.Add("integracao", CriarIntegracao(user.Roles.ToArray()));
@@ -65,8 +65,9 @@ namespace Inclock.BL.Rest
         public async void EncerrarSessao(int func)
         {
             using (HttpClient client = new HttpClient())
-            {
-                var json = await client.DeleteAsync(URI + "sendaccount/" + func + "/mob");
+            {//int func, string dispositivo
+                StringContent content = new StringContent("{\"func\":"+func+",\"dispositivo\":\"mob\"}", Encoding.UTF8, "application/json");
+                var json = await client.PutAsync(URI + "ApagarSessao",content);
             }
         }
         public async Task<Funcionario> LogarAsync(string login, string senha)
